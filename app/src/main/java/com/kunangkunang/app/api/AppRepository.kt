@@ -1,5 +1,6 @@
 package com.kunangkunang.app.api
 
+import android.util.Log
 import com.kunangkunang.app.model.amenities.Amenities
 import com.kunangkunang.app.model.banner.Banner
 import com.kunangkunang.app.model.checkout.Checkout
@@ -245,14 +246,20 @@ class AppRepository {
             .getDetailNews(id)
             .enqueue(object : Callback<DetailNews?> {
                 override fun onFailure(call: Call<DetailNews?>, t: Throwable) {
+                    Log.e("news error", "masuk onfailure")
                     callback.onDataError()
                 }
 
                 override fun onResponse(call: Call<DetailNews?>, response: Response<DetailNews?>?) {
                     response?.let {
+                        Log.e("news response", it.toString())
                         if (it.isSuccessful) {
+                            Log.e("news success", "masuk onfailure")
+
                             callback.onDataLoaded(it.body())
                         } else {
+                            Log.e("news error", "masuk onresponse")
+
                             callback.onDataError()
                         }
                     }

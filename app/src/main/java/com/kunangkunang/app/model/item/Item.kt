@@ -16,10 +16,6 @@ data class Item(
     @Expose
     val employeeName: String? = null,
 
-    @SerializedName("password")
-    @Expose
-    val password: String? = null,
-
     @SerializedName("details")
     @Expose
     val details: List<ItemDetails?>? = null

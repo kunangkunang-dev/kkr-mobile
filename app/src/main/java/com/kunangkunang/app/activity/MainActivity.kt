@@ -517,19 +517,23 @@ class MainActivity : AppCompatActivity(), ImageListener, MainView{
         }
 
         cv_fnb.setOnClickListener {
-            moveToTitleActivity(Constants.FNB, config?.data?.fnbImage)
+//            moveToTitleActivity(Constants.FNB, config?.data?.fnbImage)
+            startActivity(Intent(this, FnbActivity::class.java))
         }
 
         cv_laundry.setOnClickListener {
-            moveToTitleActivity(Constants.LAUNDRY, config?.data?.laundryImage)
+//            moveToTitleActivity(Constants.LAUNDRY, config?.data?.laundryImage)
+            startActivity(Intent(this, LaundryActivity::class.java))
         }
 
         cv_spa.setOnClickListener {
-            moveToTitleActivity(Constants.SPA, config?.data?.spaImage)
+//            moveToTitleActivity(Constants.SPA, config?.data?.spaImage)
+            startActivity(Intent(this, SpaActivity::class.java))
         }
 
         cv_amenities.setOnClickListener {
-            moveToTitleActivity(Constants.AMENITIES, config?.data?.amenitiesImage)
+//            moveToTitleActivity(Constants.AMENITIES, config?.data?.amenitiesImage)
+            startActivity(Intent(this, AmenitiesActivity::class.java))
         }
     }
 

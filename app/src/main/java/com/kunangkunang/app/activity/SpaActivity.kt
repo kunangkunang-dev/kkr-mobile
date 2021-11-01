@@ -16,7 +16,10 @@ import com.kunangkunang.app.adapter.OrderAdapter
 import com.kunangkunang.app.adapter.SpaAdapter
 import com.kunangkunang.app.api.AppRepository
 import com.kunangkunang.app.constant.Constants
-import com.kunangkunang.app.helper.*
+import com.kunangkunang.app.helper.CustomSpinner
+import com.kunangkunang.app.helper.Utilities
+import com.kunangkunang.app.helper.hideSystemBar
+import com.kunangkunang.app.helper.setDimensionLarge
 import com.kunangkunang.app.model.customer.Customer
 import com.kunangkunang.app.model.login.Login
 import com.kunangkunang.app.model.order.Order
@@ -142,7 +145,8 @@ class SpaActivity : AppCompatActivity(), TransactionView<Spa?>, OrderView<Order?
 
     private fun initiateTask() {
         // Get shared preferences
-        val sharedPreferences = getSharedPreferences(BuildConfig.APPLICATION_ID, Context.MODE_PRIVATE)
+        val sharedPreferences =
+            getSharedPreferences(BuildConfig.APPLICATION_ID, Context.MODE_PRIVATE)
 
         // Get room id
         sharedPreferences.getString("room", null)?.let { it ->
@@ -177,7 +181,8 @@ class SpaActivity : AppCompatActivity(), TransactionView<Spa?>, OrderView<Order?
 
         // Initiate presenter & adapter
         presenter = SpaPresenter(scope, this, repository)
-        adapter = SpaAdapter(this, spaSchedules, roomId, Constants.SPA, null, null, null, null, this)
+        adapter =
+            SpaAdapter(this, spaSchedules, roomId, Constants.SPA, null, null, null, null, this)
         orderAdapter = OrderAdapter(this, order, this)
 
         // Initiate recyclerView for food & beverage
@@ -191,7 +196,11 @@ class SpaActivity : AppCompatActivity(), TransactionView<Spa?>, OrderView<Order?
         rv_spa_order.adapter = orderAdapter
 
         btn_spa_order.setOnClickListener {
-            openTransactionDialog()
+            if (order.isNotEmpty()) {
+                openTransactionDialog()
+            } else {
+                Toast.makeText(this, "Order tidak boleh kosong", Toast.LENGTH_LONG).show()
+            }
         }
 
         loadSpa = presenter.loadSpa()
@@ -267,7 +276,7 @@ class SpaActivity : AppCompatActivity(), TransactionView<Spa?>, OrderView<Order?
 
             for (item in order) {
                 item?.let {
-                    val itemId= it.itemId
+                    val itemId = it.itemId
                     val itemName = it.orderDetail
                     val itemCategoryId = it.categoryId
                     val itemQty = it.orderQuantity
@@ -277,12 +286,30 @@ class SpaActivity : AppCompatActivity(), TransactionView<Spa?>, OrderView<Order?
 
                     totalPrice += itemQty?.let { it1 -> price?.times(it1) } ?: 0
 
-                    val detail = TransactionDetails(itemCategoryId, itemName, null, itemQty, itemId, spaStart?.substring(0, spaStart.length - 3), spaEnd?.substring(0, spaEnd.length - 3), price)
+                    val detail = TransactionDetails(
+                        itemCategoryId,
+                        itemName,
+                        null,
+                        itemQty,
+                        itemId,
+                        spaStart?.substring(0, spaStart.length - 3),
+                        spaEnd?.substring(0, spaEnd.length - 3),
+                        price
+                    )
                     details.add(detail)
                 }
             }
 
-            val transactionData = TransactionData(roomId, view.et_dialog_notes.text.toString(), Constants.SPA, Utilities.generateTransactiondate(), customerId, totalPrice, checkInNumber, details)
+            val transactionData = TransactionData(
+                roomId,
+                view.et_dialog_notes.text.toString(),
+                Constants.SPA,
+                Utilities.generateTransactiondate(),
+                customerId,
+                totalPrice,
+                checkInNumber,
+                details
+            )
             val transaction = Transaction(transactionData)
 
             // Post transaction to server

@@ -91,27 +91,51 @@
             app:layout_constraintGuide_percent="0.65" />
 
         <androidx.cardview.widget.CardView
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:id="@+id/cvSpnRoom"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/guideline4"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cvFnbOrder"
+            app:layout_constraintBottom_toTopOf="@id/btn_fnb_order"
+            app:cardBackgroundColor="@android:color/black"
+            app:cardCornerRadius="8dp">
+
+            <Spinner
+                android:id="@+id/spnRoom"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:backgroundTint="@color/colorAccent"
+                android:gravity="start|center_vertical"
+                android:paddingStart="16dp"
+                android:prompt="@string/categories"
+                android:spinnerMode="dropdown"
+                android:textAlignment="gravity"
+                android:textSize="14sp" />
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cvFnbOrder"
+            android:layout_marginTop="16dp"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"
             app:cardBackgroundColor="@android:color/black"
             app:cardCornerRadius="8dp"
-            app:layout_constraintBottom_toTopOf="@+id/btn_fnb_order"
+            app:layout_constraintBottom_toTopOf="@id/cvSpnRoom"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/guideline4"
-            app:layout_constraintTop_toTopOf="@+id/rv_fnb">
+            app:layout_constraintTop_toBottomOf="@id/textView2">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_fnb_order"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/shape_rectangle_rounded_dark"
-                android:clipToPadding="false"
-                app:layout_constraintBottom_toTopOf="@+id/btn_fnb_order"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/guideline4"
-                app:layout_constraintTop_toBottomOf="@+id/spn_fnb">
+                android:clipToPadding="false">
 
             </androidx.recyclerview.widget.RecyclerView>
 
@@ -126,6 +150,7 @@
         </androidx.cardview.widget.CardView>
 
         <TextView
+            android:layout_marginTop="0dp"
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="24dp"
@@ -135,7 +160,7 @@
             android:textColor="@color/colorAccent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/guideline4"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"/>
 
         <Button
             android:id="@+id/btn_fnb_order"

@@ -214,7 +214,7 @@ class MainPresenter(private val context: Context,
             }
         }
 
-        return Item(roomId, checkinId, employeeName, password, details)
+        return Item(roomId, checkinId, employeeName, details)
     }
 
     fun submitItem(item: Item): Job {

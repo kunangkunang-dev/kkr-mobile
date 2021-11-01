@@ -1,5 +1,6 @@
 package com.kunangkunang.app.view
 
+import com.kunangkunang.app.model.room.Room
 import com.kunangkunang.app.model.transaction.TransactionResponse
 
 interface TransactionView<T> {

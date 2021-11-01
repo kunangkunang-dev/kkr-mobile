@@ -71,7 +71,8 @@ class AmenitiesActivity : AppCompatActivity(), TransactionView<Amenities?>, Orde
 
     private fun initiateTask() {
         // Get shared preferences
-        val sharedPreferences = getSharedPreferences(BuildConfig.APPLICATION_ID, Context.MODE_PRIVATE)
+        val sharedPreferences =
+            getSharedPreferences(BuildConfig.APPLICATION_ID, Context.MODE_PRIVATE)
 
         // Get room id
         sharedPreferences.getString("room", null)?.let { it ->
@@ -119,7 +120,11 @@ class AmenitiesActivity : AppCompatActivity(), TransactionView<Amenities?>, Orde
 
         // Set click listener
         btn_amenities_order.setOnClickListener {
-            openTransactionDialog()
+            if (order.isNotEmpty()) {
+                openTransactionDialog()
+            } else {
+                Toast.makeText(this, "Order tidak boleh kosong", Toast.LENGTH_LONG).show()
+            }
         }
 
         // Start downloading data
@@ -217,7 +222,7 @@ class AmenitiesActivity : AppCompatActivity(), TransactionView<Amenities?>, Orde
 
             for (item in order) {
                 item?.let {
-                    val itemId= it.itemId
+                    val itemId = it.itemId
                     val itemName = it.orderDetail
                     val itemCategoryId = it.categoryId
                     val itemQty = it.orderQuantity
@@ -225,12 +230,30 @@ class AmenitiesActivity : AppCompatActivity(), TransactionView<Amenities?>, Orde
 
                     totalPrice += itemQty?.let { it1 -> price.times(it1) } ?: 0
 
-                    val detail = TransactionDetails(itemId, itemName, itemCategoryId, itemQty, null, null, null, price)
+                    val detail = TransactionDetails(
+                        itemId,
+                        itemName,
+                        itemCategoryId,
+                        itemQty,
+                        null,
+                        null,
+                        null,
+                        price
+                    )
                     details.add(detail)
                 }
             }
 
-            val transactionData = TransactionData(roomId, view.et_dialog_notes.text.toString(), Constants.AMENITIES, Utilities.generateTransactiondate(), customerId, totalPrice, checkInNumber, details)
+            val transactionData = TransactionData(
+                roomId,
+                view.et_dialog_notes.text.toString(),
+                Constants.AMENITIES,
+                Utilities.generateTransactiondate(),
+                customerId,
+                totalPrice,
+                checkInNumber,
+                details
+            )
             val transaction = Transaction(transactionData)
 
             // Post transaction to server

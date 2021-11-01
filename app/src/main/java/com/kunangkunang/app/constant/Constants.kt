@@ -9,5 +9,6 @@ object Constants {
     const val CHANGE_LOCATION_SETTING_REQUEST_CODE = 102
     const val MAIN_ACTIVITY_KEY = "main_activity"
     const val FROM_MAIN_ACTIVITY = 1
+    const val ROOM_RESTAURANT = "Restaurant"
 
 }
