@@ -231,7 +231,7 @@ class FnbActivity : AppCompatActivity(), TransactionView<FnbCategory?>, Internal
             }
 
             customer.data?.orderNumber?.let {
-                Log.e("checkInNumber", it.toString())
+                Log.e("checkInNumber", it)
                 checkInNumber = it
             }
         }
@@ -275,7 +275,7 @@ class FnbActivity : AppCompatActivity(), TransactionView<FnbCategory?>, Internal
                     openTransactionDialog()
                 }
             } else {
-                Toast.makeText(this, "Order tidak boleh kosong", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, "Order cannot be empty", Toast.LENGTH_LONG).show()
             }
 
         }

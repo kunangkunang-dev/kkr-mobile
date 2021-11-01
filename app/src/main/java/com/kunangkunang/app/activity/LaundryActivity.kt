@@ -185,7 +185,7 @@ class LaundryActivity : AppCompatActivity(), TransactionView<Laundry?>, OrderVie
             if (order.isNotEmpty()) {
                 openTransactionDialog()
             } else {
-                Toast.makeText(this, "Order tidak boleh kosong", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, "Order cannot be empty", Toast.LENGTH_LONG).show()
             }
         }
 
