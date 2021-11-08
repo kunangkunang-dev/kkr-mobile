@@ -32,8 +32,8 @@
 
                 <ImageView
                     android:id="@+id/img_title_news"
-                    android:layout_width="200dp"
-                    android:layout_height="0dp"
+                    android:layout_width="179dp"
+                    android:layout_height="34dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="8dp"
                     android:scaleType="fitCenter"
