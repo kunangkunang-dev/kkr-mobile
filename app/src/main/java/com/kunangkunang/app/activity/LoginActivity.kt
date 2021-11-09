@@ -13,11 +13,11 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.gson.Gson
 import com.kunangkunang.app.BuildConfig
-import com.kunangkunang.app.helper.DeviceAdminReceiver
 import com.kunangkunang.app.R
 import com.kunangkunang.app.api.AppRepository
 import com.kunangkunang.app.constant.Constants
 import com.kunangkunang.app.helper.CustomSpinner
+import com.kunangkunang.app.helper.DeviceAdminReceiver
 import com.kunangkunang.app.helper.hideSystemBar
 import com.kunangkunang.app.model.login.Login
 import com.kunangkunang.app.model.room.Room
@@ -88,7 +88,8 @@ class LoginActivity : AppCompatActivity(), LoginView {
                 login = it
 
                 // Store data in shared preferences
-                val sharedPreferences = getSharedPreferences(BuildConfig.APPLICATION_ID, Context.MODE_PRIVATE)
+                val sharedPreferences =
+                    getSharedPreferences(BuildConfig.APPLICATION_ID, Context.MODE_PRIVATE)
                 val editor = sharedPreferences.edit()
                 editor.putString("room", Gson().toJson(login))
                 editor.apply()
@@ -114,7 +115,8 @@ class LoginActivity : AppCompatActivity(), LoginView {
 
     private fun checkLoginState() {
         // Check stored data
-        val sharedPreferences = getSharedPreferences(BuildConfig.APPLICATION_ID, Context.MODE_PRIVATE)
+        val sharedPreferences =
+            getSharedPreferences(BuildConfig.APPLICATION_ID, Context.MODE_PRIVATE)
         val room = sharedPreferences.getString("room", null)
 
         // If stored data != null proceed to main activity
@@ -196,7 +198,8 @@ class LoginActivity : AppCompatActivity(), LoginView {
                     PackageManager.DONT_KILL_APP
                 )
         } else {
-            Toast.makeText(applicationContext, R.string.not_lock_whitelisted, Toast.LENGTH_SHORT).show()
+            Toast.makeText(applicationContext, R.string.not_lock_whitelisted, Toast.LENGTH_SHORT)
+                .show()
         }
     }
 
@@ -210,17 +213,21 @@ class LoginActivity : AppCompatActivity(), LoginView {
         // Check to see if started by LockActivity and disable LockActivity if so
         intent?.let {
             if (it.getIntExtra(Constants.MAIN_ACTIVITY_KEY, 0) == Constants.FROM_MAIN_ACTIVITY) {
-                devicePolicyManager
-                    .clearPackagePersistentPreferredActivities(
-                        adminComponentName,
-                        packageName)
+                if (devicePolicyManager.isAdminActive(adminComponentName)) {
+                    devicePolicyManager
+                        .clearPackagePersistentPreferredActivities(
+                            adminComponentName,
+                            packageName
+                        )
 
-                packageManager
-                    .setComponentEnabledSetting(
-                        ComponentName(applicationContext, MainActivity::class.java),
-                        PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
-                        PackageManager.DONT_KILL_APP
-                )
+                    packageManager
+                        .setComponentEnabledSetting(
+                            ComponentName(applicationContext, MainActivity::class.java),
+                            PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
+                            PackageManager.DONT_KILL_APP
+                        )
+                }
+
             }
         }
     }

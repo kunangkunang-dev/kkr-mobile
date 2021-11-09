@@ -367,6 +367,9 @@ class MainActivity : AppCompatActivity(), ImageListener, MainView {
             if (it == 200) {
                 launchTask()
                 Toast.makeText(this, data.message, Toast.LENGTH_SHORT).show()
+            }else{
+                launchTask()
+                Toast.makeText(this, data.message, Toast.LENGTH_LONG).show()
             }
         }
     }
@@ -492,7 +495,7 @@ class MainActivity : AppCompatActivity(), ImageListener, MainView {
 
         // Set click listener
         img_chat.setOnClickListener {
-            launchChat()
+            openCheckoutDialog()
         }
 
         tv_room_id.setOnClickListener {
@@ -926,8 +929,11 @@ class MainActivity : AppCompatActivity(), ImageListener, MainView {
         setUserRestriction(UserManager.DISALLOW_ADJUST_VOLUME, active)
 
         // disable keyguard and status bar
-        devicePolicyManager.setKeyguardDisabled(adminComponentName, active)
-        devicePolicyManager.setStatusBarDisabled(adminComponentName, active)
+        if (devicePolicyManager.isAdminActive(adminComponentName)) {
+            devicePolicyManager.setKeyguardDisabled(adminComponentName, active)
+            devicePolicyManager.setStatusBarDisabled(adminComponentName, active)
+        }
+
 
         // enable STAY_ON_WHILE_PLUGGED_IN
         enableStayOnWhilePluggedIn(active)
@@ -940,18 +946,24 @@ class MainActivity : AppCompatActivity(), ImageListener, MainView {
                     SystemUpdatePolicy.createWindowedInstallPolicy(60, 120)
                 )
         } else {
-            devicePolicyManager
-                .setSystemUpdatePolicy(
-                    adminComponentName, null
-                )
+            if (devicePolicyManager.isAdminActive(adminComponentName)) {
+                devicePolicyManager
+                    .setSystemUpdatePolicy(
+                        adminComponentName, null
+                    )
+            }
+
         }
 
         // set this Activity as a lock task package
-        devicePolicyManager
-            .setLockTaskPackages(
-                adminComponentName,
-                if (active) arrayOf(packageName) else arrayOf()
-            )
+        if (devicePolicyManager.isAdminActive(adminComponentName)) {
+            devicePolicyManager
+                .setLockTaskPackages(
+                    adminComponentName,
+                    if (active) arrayOf(packageName) else arrayOf()
+                )
+        }
+
 
         val intentFilter = IntentFilter(Intent.ACTION_MAIN)
         intentFilter.addCategory(Intent.CATEGORY_HOME)
@@ -967,11 +979,14 @@ class MainActivity : AppCompatActivity(), ImageListener, MainView {
                     ComponentName(packageName, MainActivity::class.java.name)
                 )
         } else {
-            devicePolicyManager
-                .clearPackagePersistentPreferredActivities(
-                    adminComponentName,
-                    packageName
-                )
+            if (devicePolicyManager.isAdminActive(adminComponentName)) {
+                devicePolicyManager
+                    .clearPackagePersistentPreferredActivities(
+                        adminComponentName,
+                        packageName
+                    )
+            }
+
         }
     }
 
@@ -983,10 +998,13 @@ class MainActivity : AppCompatActivity(), ImageListener, MainView {
                     restriction
                 )
         } else {
-            devicePolicyManager
-                .clearUserRestriction(
-                    adminComponentName, restriction
-                )
+            if (devicePolicyManager.isAdminActive(adminComponentName)) {
+                devicePolicyManager
+                    .clearUserRestriction(
+                        adminComponentName, restriction
+                    )
+            }
+
         }
     }
 
@@ -1001,12 +1019,15 @@ class MainActivity : AppCompatActivity(), ImageListener, MainView {
                             or BatteryManager.BATTERY_PLUGGED_WIRELESS).toString()
                 )
         } else {
-            devicePolicyManager
-                .setGlobalSetting(
-                    adminComponentName,
-                    Settings.Global.STAY_ON_WHILE_PLUGGED_IN,
-                    "0"
-                )
+            if (devicePolicyManager.isAdminActive(adminComponentName)) {
+                devicePolicyManager
+                    .setGlobalSetting(
+                        adminComponentName,
+                        Settings.Global.STAY_ON_WHILE_PLUGGED_IN,
+                        "0"
+                    )
+            }
+
         }
     }
 }

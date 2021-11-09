@@ -11,14 +11,14 @@ import com.kunangkunang.app.model.history.History
 import com.kunangkunang.app.model.item.Item
 import com.kunangkunang.app.model.laundry.Laundry
 import com.kunangkunang.app.model.login.Login
-import com.kunangkunang.app.model.login.LoginData
-import com.kunangkunang.app.model.login.LoginRequest
+import com.kunangkunang.app.model.login.RoomRequest
 import com.kunangkunang.app.model.logout.Logout
 import com.kunangkunang.app.model.news.DetailNews
 import com.kunangkunang.app.model.news.News
 import com.kunangkunang.app.model.review.Review
 import com.kunangkunang.app.model.status.Status
 import com.kunangkunang.app.model.room.Room
+import com.kunangkunang.app.model.room.RoomData
 import com.kunangkunang.app.model.spa.Spa
 import com.kunangkunang.app.model.transaction.Transaction
 import com.kunangkunang.app.model.transaction.TransactionResponse
@@ -224,7 +224,7 @@ class AppRepository {
     fun logOut(roomId: Int, password: String, callback: AppRepositoryCallback<Logout?>) {
         ApiClient
             .kunangKunangAPIServices
-            .logOut(roomId, password)
+            .logOut(RoomRequest(roomId, password))
             .enqueue(object : Callback<Logout?> {
                 override fun onFailure(call: Call<Logout?>, t: Throwable) {
                     callback.onDataError()
@@ -293,7 +293,7 @@ class AppRepository {
     fun getLoginData(id: Int, password: String, callback: AppRepositoryCallback<Login?>) {
         ApiClient
             .kunangKunangAPIServices
-            .getLoginData(LoginRequest(id, password))
+            .getLoginData(RoomRequest(id, password))
             .enqueue(object : Callback<Login?> {
                 override fun onFailure(call: Call<Login?>, t: Throwable) {
                     callback.onDataError()
@@ -380,7 +380,7 @@ class AppRepository {
     fun verifyPassword(password: String, callback: AppRepositoryCallback<Status?>) {
         ApiClient
             .kunangKunangAPIServices
-            .verifyPassword(password)
+            .verifyPassword(RoomRequest(password = password))
             .enqueue(object : Callback<Status?> {
                 override fun onFailure(call: Call<Status?>, t: Throwable) {
                     callback.onDataError()

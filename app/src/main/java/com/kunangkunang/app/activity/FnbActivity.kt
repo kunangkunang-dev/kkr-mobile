@@ -265,7 +265,7 @@ class FnbActivity : AppCompatActivity(), TransactionView<FnbCategory?>, Internal
         // Set click listener
         btn_fnb_order.setOnClickListener {
             if (order.isNotEmpty()) {
-                if (!isRestaurant) {
+                if (isRestaurant) {
                     selectedRoom.id?.let {
                         loadCustomerInfo = presenter.loadCustomerInfo(it)
                     } ?: kotlin.run {
@@ -282,7 +282,7 @@ class FnbActivity : AppCompatActivity(), TransactionView<FnbCategory?>, Internal
 
         // Start downloading data
         loadFnb = presenter.loadFnbCategory()
-        if (!isRestaurant) {
+        if (isRestaurant) {
             cvSpnRoom.visibility = View.VISIBLE
             loadRoom = presenter.loadRoom()
         } else {
@@ -425,7 +425,7 @@ class FnbActivity : AppCompatActivity(), TransactionView<FnbCategory?>, Internal
                 }
             }
 
-            val transactionData: TransactionData = if (!isRestaurant) {
+            val transactionData: TransactionData = if (isRestaurant) {
                 TransactionData(
                     selectedRoom.id!!,
                     view.et_dialog_notes.text.toString(),

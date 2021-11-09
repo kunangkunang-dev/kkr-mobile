@@ -11,8 +11,7 @@ import com.kunangkunang.app.model.history.History
 import com.kunangkunang.app.model.item.Item
 import com.kunangkunang.app.model.laundry.Laundry
 import com.kunangkunang.app.model.login.Login
-import com.kunangkunang.app.model.login.LoginData
-import com.kunangkunang.app.model.login.LoginRequest
+import com.kunangkunang.app.model.login.RoomRequest
 import com.kunangkunang.app.model.logout.Logout
 import com.kunangkunang.app.model.news.DetailNews
 import com.kunangkunang.app.model.news.News
@@ -63,8 +62,7 @@ interface ApiServices {
 
     @POST("event/logout")
     fun logOut(
-        @Query("room_id") roomId: Int,
-        @Query("password") password: String
+        @Body logoutData: RoomRequest
     ): Call<Logout>
 
 //    @GET("api/news/{id}")
@@ -78,7 +76,7 @@ interface ApiServices {
 
     @POST("event/login")
     fun getLoginData(
-        @Body loginData: LoginRequest
+        @Body loginData: RoomRequest
     ): Call<Login>
 
     @POST("api/room/checkout")
@@ -91,7 +89,7 @@ interface ApiServices {
     fun getConfig(): Call<Config>
 
     @POST("event/check-password")
-    fun verifyPassword(@Query("password") password: String): Call<Status>
+    fun verifyPassword(@Body loginData: RoomRequest): Call<Status>
 
     @GET("data/get-history")
     fun getHistory(
@@ -99,8 +97,8 @@ interface ApiServices {
         @Query("customer_id") customerId: Int?
     ): Call<History>
 
-    @POST("event/send-notification")
-    fun requestHelp(@Query("message") roomName: String): Call<Status>
+    @GET("event/send-notification")
+    fun requestHelp(@Query("room_name") roomName: String): Call<Status>
 
     @POST("event/send-review")
     fun submitReview(@Body review: Review): Call<Status>
