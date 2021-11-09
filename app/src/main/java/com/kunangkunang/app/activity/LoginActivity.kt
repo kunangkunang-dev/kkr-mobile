@@ -84,7 +84,7 @@ class LoginActivity : AppCompatActivity(), LoginView {
 
     override fun notifyLoginStatus(data: Login?) {
         data?.let {
-            if (it.message == null) {
+            if (it.message == "Success.") {
                 login = it
 
                 // Store data in shared preferences
@@ -110,7 +110,6 @@ class LoginActivity : AppCompatActivity(), LoginView {
 
     override fun loginFailed() {
         Log.e("LOGIN", "Error")
-        Toast.makeText(this, "asd", Toast.LENGTH_LONG).show()
     }
 
     private fun checkLoginState() {

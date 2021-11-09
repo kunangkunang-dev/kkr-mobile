@@ -5,87 +5,103 @@ import com.kunangkunang.app.model.amenities.Amenities
 import com.kunangkunang.app.model.banner.Banner
 import com.kunangkunang.app.model.checkout.Checkout
 import com.kunangkunang.app.model.config.Config
-import com.kunangkunang.app.model.status.Status
 import com.kunangkunang.app.model.customer.Customer
 import com.kunangkunang.app.model.fnb.FnbCategory
 import com.kunangkunang.app.model.history.History
 import com.kunangkunang.app.model.item.Item
 import com.kunangkunang.app.model.laundry.Laundry
 import com.kunangkunang.app.model.login.Login
+import com.kunangkunang.app.model.login.LoginData
+import com.kunangkunang.app.model.login.LoginRequest
 import com.kunangkunang.app.model.logout.Logout
 import com.kunangkunang.app.model.news.DetailNews
 import com.kunangkunang.app.model.news.News
 import com.kunangkunang.app.model.review.Review
 import com.kunangkunang.app.model.room.Room
 import com.kunangkunang.app.model.spa.Spa
+import com.kunangkunang.app.model.status.Status
 import com.kunangkunang.app.model.transaction.Transaction
 import com.kunangkunang.app.model.transaction.TransactionResponse
 import com.kunangkunang.app.model.weather.Weather
 import retrofit2.Call
-import retrofit2.http.*
+import retrofit2.http.Body
+import retrofit2.http.GET
+import retrofit2.http.POST
+import retrofit2.http.Query
 
 interface ApiServices {
     @GET("data/2.5/weather")
-    fun getCurrentWeather(@Query("lat") lat: String,
-                          @Query("lon") lon: String,
-                          @Query("appid") key: String = BuildConfig.OPEN_WEATHER_KEY): Call<Weather>
+    fun getCurrentWeather(
+        @Query("lat") lat: String,
+        @Query("lon") lon: String,
+        @Query("appid") key: String = BuildConfig.OPEN_WEATHER_KEY
+    ): Call<Weather>
 
-    @GET("api/banner")
+    @GET("data/get-banner")
     fun getBanner(): Call<Banner>
 
-    @GET("api/news")
+    @GET("data/get-news")
     fun getNews(): Call<News>
 
-    @GET("api/food_category")
+    @GET("data/get-fnb-category")
     fun getFnbCategory(): Call<FnbCategory>
 
-    @GET("api/laundry")
+    @GET("data/get-laundry")
     fun getLaundry(): Call<Laundry>
 
-    @GET("api/amenities")
+    @GET("data/get-amenities")
     fun getAmenities(): Call<Amenities>
 
-    @POST("api/transaction")
+    @POST("event/send-transaction")
     fun postTransaction(@Body transaction: Transaction): Call<TransactionResponse>
 
-    @GET("api/getroom")
+    @GET("data/get-room")
     fun getRoom(): Call<Room>
 
-    @GET("api/spa")
+    @GET("data/get-spa")
     fun getSpa(): Call<Spa>
 
-    @POST("api/room/logout")
-    fun logOut(@Query("room_id") roomId: Int,
-               @Query("password") password: String): Call<Logout>
+    @POST("event/logout")
+    fun logOut(
+        @Query("room_id") roomId: Int,
+        @Query("password") password: String
+    ): Call<Logout>
 
-    @GET("api/news/{id}")
-    fun getDetailNews(@Path("id") id: Int): Call<DetailNews>
+//    @GET("api/news/{id}")
+//    fun getDetailNews(@Path("id") id: Int): Call<DetailNews>
 
-    @POST("api/room/getCustomer")
+    @GET("api/get-news-by-id")
+    fun getDetailNews(@Query("id") id: Int): Call<DetailNews>
+
+    @GET("data/get-customer-info")
     fun getCustomerInfo(@Query("room_id") roomId: Int): Call<Customer>
 
-    @POST("api/checking_room")
-    fun getLoginData(@Query("room_id") id: Int,
-                     @Query("password") password: String): Call<Login>
+    @POST("event/login")
+    fun getLoginData(
+        @Body loginData: LoginRequest
+    ): Call<Login>
 
     @POST("api/room/checkout")
     fun checkOut(@Body checkout: Checkout): Call<Status>
 
-    @POST("api/room/sendItem")
+    @POST("event/send-item")
     fun submitItem(@Body item: Item): Call<Status>
 
-    @GET("api/system")
+    @GET("data/get-config")
     fun getConfig(): Call<Config>
 
-    @POST("api/checkPassword")
+    @POST("event/check-password")
     fun verifyPassword(@Query("password") password: String): Call<Status>
 
-    @GET("api/transaction")
-    fun getHistory(@Query("room_id") roomId: Int?, @Query("customer_id") customerId: Int?): Call<History>
+    @GET("data/get-history")
+    fun getHistory(
+        @Query("room_id") roomId: Int?,
+        @Query("customer_id") customerId: Int?
+    ): Call<History>
 
-    @POST("api/sendNotif")
+    @POST("event/send-notification")
     fun requestHelp(@Query("message") roomName: String): Call<Status>
 
-    @POST("api/customer_review")
+    @POST("event/send-review")
     fun submitReview(@Body review: Review): Call<Status>
 }

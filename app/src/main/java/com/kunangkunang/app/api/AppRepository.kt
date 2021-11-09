@@ -11,6 +11,8 @@ import com.kunangkunang.app.model.history.History
 import com.kunangkunang.app.model.item.Item
 import com.kunangkunang.app.model.laundry.Laundry
 import com.kunangkunang.app.model.login.Login
+import com.kunangkunang.app.model.login.LoginData
+import com.kunangkunang.app.model.login.LoginRequest
 import com.kunangkunang.app.model.logout.Logout
 import com.kunangkunang.app.model.news.DetailNews
 import com.kunangkunang.app.model.news.News
@@ -291,7 +293,7 @@ class AppRepository {
     fun getLoginData(id: Int, password: String, callback: AppRepositoryCallback<Login?>) {
         ApiClient
             .kunangKunangAPIServices
-            .getLoginData(id, password)
+            .getLoginData(LoginRequest(id, password))
             .enqueue(object : Callback<Login?> {
                 override fun onFailure(call: Call<Login?>, t: Throwable) {
                     callback.onDataError()
