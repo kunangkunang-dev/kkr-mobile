@@ -24,7 +24,7 @@ class OrderAdapter(private val context: Context,
                 val spaEnd = order.spaEnd
 
                 if (detail != null && spaDate != null && spaStart != null && spaEnd != null) {
-                    itemView.tv_order_name.text = "$detail ($spaDate, ${spaStart}-${spaEnd})"
+                    itemView.tv_order_name.text = "$detail \n($spaDate, ${spaStart}-${spaEnd})"
                 } else {
                     itemView.tv_order_name.text = detail
                 }

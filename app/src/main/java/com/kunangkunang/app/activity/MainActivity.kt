@@ -705,8 +705,8 @@ class MainActivity : AppCompatActivity(), ImageListener, MainView {
         builder.setView(view)
 
         dialog = builder.create()
-        dialog.setCancelable(false)
-        dialog.setCanceledOnTouchOutside(false)
+//        dialog.setCancelable(false)
+//        dialog.setCanceledOnTouchOutside(false)
 
         history?.data?.let {
             val adapter = HistoryAdapter(this, this, it)

@@ -68,7 +68,7 @@ interface ApiServices {
 //    @GET("api/news/{id}")
 //    fun getDetailNews(@Path("id") id: Int): Call<DetailNews>
 
-    @GET("api/get-news-by-id")
+    @GET("data/get-news-by-id")
     fun getDetailNews(@Query("id") id: Int): Call<DetailNews>
 
     @GET("data/get-customer-info")

@@ -137,7 +137,7 @@ class FnbActivity : AppCompatActivity(), TransactionView<FnbCategory?>, Internal
                 openNameCheckDialog()
                 Log.e("customerInfo", it.toString())
             } ?: kotlin.run {
-                Toast.makeText(this, "Room Kosong Kamu berbohong ya hihihi", Toast.LENGTH_LONG)
+                Toast.makeText(this, "Room is currently empty/not checked in", Toast.LENGTH_LONG)
                     .show()
             }
         }
@@ -370,7 +370,7 @@ class FnbActivity : AppCompatActivity(), TransactionView<FnbCategory?>, Internal
         dialog.setCancelable(false)
         dialog.setCanceledOnTouchOutside(false)
 
-        view.tvNameConfirmation.text = "Apakah benar ini ${customer?.data?.customer?.name} !!?!?!?"
+        view.tvNameConfirmation.text = "Confirm customer name: \n${customer?.data?.customer?.name}"
         view.btnCancel.setOnClickListener { dialog.cancel() }
         view.btnConfirm.setOnClickListener {
             openTransactionDialog()

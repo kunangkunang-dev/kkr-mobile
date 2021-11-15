@@ -75,7 +75,7 @@
     <TextView
         app:layout_constraintStart_toEndOf="@id/tv_total_price"
         android:id="@+id/tv_total_price_value"
-        android:textDirection="rtl"
+        android:gravity="end"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"

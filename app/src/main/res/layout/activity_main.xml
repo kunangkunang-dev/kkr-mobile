@@ -59,11 +59,11 @@
                     android:id="@+id/img_chat"
                     android:layout_width="28dp"
                     android:layout_height="28dp"
-                    android:layout_marginStart="16dp"
+                    android:layout_marginStart="20dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/ic_chat" />
+                    app:srcCompat="@drawable/ic_bed" />
 
                 <TextView
                     android:id="@+id/tv_room_id"
@@ -92,7 +92,7 @@
                     android:id="@+id/img_panic"
                     android:layout_width="28dp"
                     android:layout_height="28dp"
-                    android:layout_marginEnd="16dp"
+                    android:layout_marginEnd="20dp"
                     android:src="@drawable/ic_warning"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
