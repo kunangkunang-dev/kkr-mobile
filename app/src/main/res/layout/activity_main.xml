@@ -154,6 +154,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/btn_welcome">
 
                     <TextView
+                        android:fontFamily="@font/times_now_semilight"
                         android:id="@+id/tv_current_hour"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -174,6 +175,7 @@
                         android:textSize="40sp" />
 
                     <TextView
+                        android:fontFamily="@font/times_now_semilight"
                         android:id="@+id/tv_current_minutes"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -240,6 +242,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
+                    android:fontFamily="@font/times_now_semilight"
                     android:id="@+id/tv_current_temp"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -252,7 +255,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_location"
-                    tools:text="29" />
+                    tools:text="29 \u00B0C" />
 
                 <TextView
                     android:id="@+id/tv_current_weather"
@@ -264,6 +267,7 @@
                     android:layout_marginBottom="16dp"
                     android:gravity="start"
                     android:singleLine="true"
+                    android:textStyle="italic"
                     android:textColor="@android:color/white"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -378,7 +382,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
                     android:gravity="center"
-                    android:text="Food &amp; Beverage"
+                    android:fontFamily="@font/times_now_semilight"
+                    android:text="FOOD &amp; BEVERAGE"
                     android:textColor="@color/colorFill"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -420,12 +425,13 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
+                    android:fontFamily="@font/times_now_semilight"
                     android:id="@+id/textView9"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
                     android:gravity="center"
-                    android:text="Laundry"
+                    android:text="LAUNDRY"
                     android:textColor="@color/colorFill"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -467,12 +473,13 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
+                    android:fontFamily="@font/times_now_semilight"
                     android:id="@+id/textView10"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
                     android:gravity="center"
-                    android:text="Spa"
+                    android:text="SPA"
                     android:textColor="@color/colorFill"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -514,12 +521,13 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
+                    android:fontFamily="@font/times_now_semilight"
                     android:id="@+id/textView"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
                     android:gravity="center"
-                    android:text="Product"
+                    android:text="PRODUCT"
                     android:textColor="@color/colorFill"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"

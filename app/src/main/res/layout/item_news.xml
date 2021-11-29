@@ -25,6 +25,7 @@
         tools:text="Created at" />
 
     <TextView
+        android:fontFamily="@font/times_now_semilight"
         android:id="@+id/tv_headline"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -36,12 +37,12 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_date"
         tools:text="Headline" />
 
-    <View
+    <ImageView
         android:id="@+id/divider2"
         android:layout_width="match_parent"
-        android:layout_height="1dp"
+        android:layout_height="2dp"
         android:layout_marginTop="16dp"
-        android:background="@android:color/white"
+        android:background="@drawable/shape_dotted_lines"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_headline" />

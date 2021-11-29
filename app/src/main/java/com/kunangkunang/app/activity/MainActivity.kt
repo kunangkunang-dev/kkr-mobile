@@ -206,7 +206,7 @@ class MainActivity : AppCompatActivity(), ImageListener, MainView {
             }
 
             it.main?.temp?.minus(273.15)?.roundToInt()?.toString().run {
-                val fullTemp = this + "\u2103"
+                val fullTemp = this + " \u00B0" +"C"
                 tv_current_temp.text = fullTemp
             }
 
@@ -367,7 +367,7 @@ class MainActivity : AppCompatActivity(), ImageListener, MainView {
             if (it == 200) {
                 launchTask()
                 Toast.makeText(this, data.message, Toast.LENGTH_SHORT).show()
-            }else{
+            } else {
                 launchTask()
                 Toast.makeText(this, data.message, Toast.LENGTH_LONG).show()
             }
@@ -526,23 +526,39 @@ class MainActivity : AppCompatActivity(), ImageListener, MainView {
         }
 
         cv_fnb.setOnClickListener {
-//            moveToTitleActivity(Constants.FNB, config?.data?.fnbImage)
-            startActivity(Intent(this, FnbActivity::class.java))
+            if (customer?.data?.customer != null) {
+                //            moveToTitleActivity(Constants.FNB, config?.data?.fnbImage)
+                startActivity(Intent(this, FnbActivity::class.java))
+            } else {
+                Toast.makeText(this, "Guest not checked in", Toast.LENGTH_LONG).show()
+            }
         }
 
         cv_laundry.setOnClickListener {
-//            moveToTitleActivity(Constants.LAUNDRY, config?.data?.laundryImage)
-            startActivity(Intent(this, LaundryActivity::class.java))
+            if (customer?.data?.customer != null) {
+                //            moveToTitleActivity(Constants.LAUNDRY, config?.data?.laundryImage)
+                startActivity(Intent(this, LaundryActivity::class.java))
+            } else {
+                Toast.makeText(this, "Guest not checked in", Toast.LENGTH_LONG).show()
+            }
         }
 
         cv_spa.setOnClickListener {
-//            moveToTitleActivity(Constants.SPA, config?.data?.spaImage)
-            startActivity(Intent(this, SpaActivity::class.java))
+            if (customer?.data?.customer != null) {
+                //            moveToTitleActivity(Constants.SPA, config?.data?.spaImage)
+                startActivity(Intent(this, SpaActivity::class.java))
+            } else {
+                Toast.makeText(this, "Guest not checked in", Toast.LENGTH_LONG).show()
+            }
         }
 
         cv_amenities.setOnClickListener {
-//            moveToTitleActivity(Constants.AMENITIES, config?.data?.amenitiesImage)
-            startActivity(Intent(this, AmenitiesActivity::class.java))
+            if (customer?.data?.customer != null) {
+                //            moveToTitleActivity(Constants.AMENITIES, config?.data?.amenitiesImage)
+                startActivity(Intent(this, AmenitiesActivity::class.java))
+            } else {
+                Toast.makeText(this, "Guest not checked in", Toast.LENGTH_LONG).show()
+            }
         }
     }
 
