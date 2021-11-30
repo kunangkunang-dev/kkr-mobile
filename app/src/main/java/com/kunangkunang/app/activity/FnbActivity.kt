@@ -16,10 +16,7 @@ import com.kunangkunang.app.adapter.ItemAdapter
 import com.kunangkunang.app.adapter.OrderAdapter
 import com.kunangkunang.app.api.AppRepository
 import com.kunangkunang.app.constant.Constants
-import com.kunangkunang.app.helper.CustomSpinner
-import com.kunangkunang.app.helper.Utilities
-import com.kunangkunang.app.helper.hideSystemBar
-import com.kunangkunang.app.helper.setDimensionLarge
+import com.kunangkunang.app.helper.*
 import com.kunangkunang.app.model.customer.Customer
 import com.kunangkunang.app.model.fnb.FnbCategory
 import com.kunangkunang.app.model.fnb.FnbCategoryData
@@ -316,7 +313,7 @@ class FnbActivity : AppCompatActivity(), TransactionView<FnbCategory?>, Internal
 
     private fun setRoomSpinner() {
         // Initiate spinner
-        val adapter = CustomSpinner(this, android.R.layout.simple_spinner_item, roomNames)
+        val adapter = CustomSpinnerLight(this, android.R.layout.simple_spinner_item, roomNames)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spnRoom.adapter = adapter
 

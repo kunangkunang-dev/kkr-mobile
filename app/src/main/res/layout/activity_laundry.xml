@@ -60,7 +60,7 @@
             android:layout_height="24dp"
             android:gravity="center"
             android:text="Service"
-            android:textColor="@color/colorAccent"
+            android:textColor="@color/colorText"
             app:layout_constraintEnd_toStartOf="@+id/guideline4"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -117,7 +117,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="Order is empty..."
-                android:textColor="@android:color/white" />
+                android:textColor="@color/colorText" />
 
         </androidx.cardview.widget.CardView>
 
@@ -128,7 +128,7 @@
             android:layout_marginEnd="16dp"
             android:gravity="center"
             android:text="Order list"
-            android:textColor="@color/colorAccent"
+            android:textColor="@color/colorText"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/guideline4"
             app:layout_constraintTop_toTopOf="parent" />
@@ -142,7 +142,7 @@
             android:background="@drawable/shape_rectangle_rounded_dark"
             android:elevation="2dp"
             android:text="Order"
-            android:textColor="@color/colorAccent"
+            android:textColor="@color/colorText"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/guideline4" />

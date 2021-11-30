@@ -10,7 +10,7 @@ import com.kunangkunang.app.R
 import org.jetbrains.anko.backgroundColor
 import org.jetbrains.anko.textColor
 
-class CustomSpinner(context: Context,
+class CustomSpinnerLight(context: Context,
                          resource: Int,
                          objects: MutableList<String>) : ArrayAdapter<String>(context, resource, objects) {
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
@@ -18,7 +18,7 @@ class CustomSpinner(context: Context,
             this.setPadding(0, this.paddingTop, this.paddingRight, this.paddingBottom)
 
             val tvColor = this as TextView
-            tvColor.textColor = ContextCompat.getColor(context, android.R.color.black)
+            tvColor.textColor = ContextCompat.getColor(context, R.color.colorText)
         }
     }
 

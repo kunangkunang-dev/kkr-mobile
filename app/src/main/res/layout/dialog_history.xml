@@ -28,7 +28,7 @@
             android:background="@drawable/shape_rectangle_rounded_dark"
             android:gravity="center"
             android:padding="16dp"
-            android:textColor="@color/colorAccent"
+            android:textColor="@color/colorText"
             tools:text="TOTAL PRICE RP56.000,-" />
 
         <Button
@@ -42,7 +42,7 @@
             android:layout_marginBottom="16dp"
             android:background="@drawable/shape_rectangle_rounded_dark"
             android:text="Close"
-            android:textColor="@color/colorAccent" />
+            android:textColor="@color/colorText" />
 
     </RelativeLayout>
 </ScrollView>

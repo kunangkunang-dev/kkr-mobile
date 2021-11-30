@@ -16,10 +16,7 @@ import com.kunangkunang.app.adapter.OrderAdapter
 import com.kunangkunang.app.adapter.SpaAdapter
 import com.kunangkunang.app.api.AppRepository
 import com.kunangkunang.app.constant.Constants
-import com.kunangkunang.app.helper.CustomSpinner
-import com.kunangkunang.app.helper.Utilities
-import com.kunangkunang.app.helper.hideSystemBar
-import com.kunangkunang.app.helper.setDimensionLarge
+import com.kunangkunang.app.helper.*
 import com.kunangkunang.app.model.customer.Customer
 import com.kunangkunang.app.model.login.Login
 import com.kunangkunang.app.model.order.Order

@@ -16,7 +16,7 @@ import com.kunangkunang.app.BuildConfig
 import com.kunangkunang.app.R
 import com.kunangkunang.app.api.AppRepository
 import com.kunangkunang.app.constant.Constants
-import com.kunangkunang.app.helper.CustomSpinner
+import com.kunangkunang.app.helper.CustomSpinnerLight
 import com.kunangkunang.app.helper.DeviceAdminReceiver
 import com.kunangkunang.app.helper.hideSystemBar
 import com.kunangkunang.app.model.login.Login
@@ -166,7 +166,7 @@ class LoginActivity : AppCompatActivity(), LoginView {
 
     private fun setSpinner() {
         // Initiate spinner
-        val adapter = CustomSpinner(this, android.R.layout.simple_spinner_item, roomNames)
+        val adapter = CustomSpinnerLight(this, android.R.layout.simple_spinner_item, roomNames)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spn_login_room.adapter = adapter
 

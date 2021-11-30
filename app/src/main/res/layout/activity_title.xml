@@ -75,7 +75,7 @@
             android:foreground="?attr/selectableItemBackgroundBorderless"
             android:padding="16dp"
             android:text="Enter"
-            android:textColor="@color/colorAccent"
+            android:textColor="@color/colorText"
             android:textSize="36sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

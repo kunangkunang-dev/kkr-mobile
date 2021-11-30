@@ -13,7 +13,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:text="Check-in:"
-        android:textColor="@android:color/white"
+        android:textColor="@android:color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_days_of_stay" />
 
@@ -27,7 +27,7 @@
         android:background="@drawable/shape_rectangle_rounded_dark"
         android:elevation="2dp"
         android:padding="16dp"
-        android:textColor="@android:color/white"
+        android:textColor="@color/colorText"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -41,7 +41,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:text="Check-out:"
-        android:textColor="@android:color/white"
+        android:textColor="@android:color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_check_in" />
 
@@ -55,7 +55,7 @@
         android:background="@drawable/shape_rectangle_rounded_dark"
         android:elevation="2dp"
         android:padding="16dp"
-        android:textColor="@android:color/white"
+        android:textColor="@color/colorText"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -69,7 +69,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:text="Name:"
-        android:textColor="@android:color/white"
+        android:textColor="@android:color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -82,7 +82,7 @@
         android:layout_marginEnd="16dp"
         android:background="@drawable/shape_rectangle_rounded_dark"
         android:padding="16dp"
-        android:textColor="@android:color/white"
+        android:textColor="@color/colorText"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -96,7 +96,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:text="Days of stay:"
-        android:textColor="@android:color/white"
+        android:textColor="@android:color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_name" />
 
@@ -109,7 +109,7 @@
         android:layout_marginEnd="16dp"
         android:background="@drawable/shape_rectangle_rounded_dark"
         android:padding="16dp"
-        android:textColor="@android:color/white"
+        android:textColor="@color/colorText"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -126,7 +126,7 @@
         android:background="@drawable/shape_rectangle_rounded_dark"
         android:elevation="2dp"
         android:text="Close"
-        android:textColor="@color/colorAccent"
+        android:textColor="@color/colorText"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_check_out" />
@@ -140,7 +140,7 @@
         android:paddingStart="16dp"
         android:paddingEnd="16dp"
         android:text="Send Review"
-        android:textColor="@color/colorAccent"
+        android:textColor="@color/colorText"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_check_out" />

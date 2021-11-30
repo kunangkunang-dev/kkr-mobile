@@ -19,7 +19,7 @@
         android:layout_gravity="top|end"
         android:background="@drawable/rounded_badge_bold"
         android:gravity="center"
-        android:textColor="@color/colorAccent"
+        android:textColor="@color/colorText"
         android:textSize="24sp"
         android:textStyle="bold"
         tools:text="12" />

@@ -17,7 +17,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="16dp"
             android:text="Customer review"
-            android:textColor="@color/colorAccent"
+            android:textColor="@android:color/black"
             android:textSize="18sp" />
 
 
@@ -30,7 +30,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:visibility="visible"
-            app:cardBackgroundColor="@android:color/black"
+            app:cardBackgroundColor="@color/colorFill"
             app:cardCornerRadius="8dp"
             app:cardElevation="4dp">
 
@@ -66,7 +66,7 @@
                 android:background="@drawable/shape_rectangle_rounded_dark"
                 android:elevation="2dp"
                 android:text="Cancel"
-                android:textColor="@color/colorAccent" />
+                android:textColor="@color/colorText" />
 
             <Button
                 android:id="@+id/btn_dialog_review_submit"
@@ -82,7 +82,7 @@
                 android:background="@drawable/shape_rectangle_rounded_dark"
                 android:elevation="2dp"
                 android:text="Submit"
-                android:textColor="@color/colorAccent" />
+                android:textColor="@color/colorText" />
         </LinearLayout>
 
     </LinearLayout>

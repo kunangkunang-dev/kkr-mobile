@@ -70,7 +70,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:textColor="@android:color/white"
+                    android:textColor="@android:color/black"
                     android:textSize="14sp"
                     app:layout_constraintBottom_toBottomOf="@+id/img_chat"
                     app:layout_constraintStart_toEndOf="@+id/img_chat"
@@ -136,7 +136,7 @@
                     android:background="@drawable/shape_rectangle_rounded_primary"
                     android:elevation="2dp"
                     android:padding="8dp"
-                    android:textColor="@color/colorAccent"
+                    android:textColor="@color/colorText"
                     android:textSize="14sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -160,7 +160,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:textColor="@color/colorAccent"
+                        android:textColor="@color/colorText"
                         android:textSize="40sp"
                         tools:text="01" />
 
@@ -171,7 +171,7 @@
                         android:layout_weight="1"
                         android:gravity="center"
                         android:text=":"
-                        android:textColor="@color/colorAccent"
+                        android:textColor="@color/colorText"
                         android:textSize="40sp" />
 
                     <TextView
@@ -181,7 +181,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:textColor="@color/colorAccent"
+                        android:textColor="@color/colorText"
                         android:textSize="40sp"
                         tools:text="51" />
                 </LinearLayout>
@@ -195,7 +195,7 @@
                     android:layout_marginEnd="8dp"
                     android:layout_marginBottom="16dp"
                     android:singleLine="true"
-                    android:textColor="@android:color/white"
+                    android:textColor="@color/colorText"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -235,7 +235,7 @@
                     android:layout_marginEnd="16dp"
                     android:gravity="start"
                     android:text="Current weather"
-                    android:textColor="@android:color/white"
+                    android:textColor="@color/colorText"
                     android:textSize="14sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -250,7 +250,7 @@
                     android:layout_marginTop="4dp"
                     android:layout_marginEnd="16dp"
                     android:gravity="start"
-                    android:textColor="@color/colorAccent"
+                    android:textColor="@color/colorText"
                     android:textSize="40sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -268,7 +268,7 @@
                     android:gravity="start"
                     android:singleLine="true"
                     android:textStyle="italic"
-                    android:textColor="@android:color/white"
+                    android:textColor="@color/colorText"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -282,7 +282,7 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="4dp"
                     android:layout_marginEnd="16dp"
-                    android:textColor="@android:color/white"
+                    android:textColor="@color/colorText"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_weather"
@@ -308,15 +308,15 @@
                 android:id="@+id/crv_main"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:fillColor="#FFFFFFFF"
+                app:fillColor="#FFFF00"
                 app:layout_constraintBottom_toTopOf="@+id/guideline2"
                 app:layout_constraintEnd_toStartOf="@+id/guideline"
                 app:layout_constraintStart_toStartOf="@+id/guideline3"
                 app:layout_constraintTop_toTopOf="parent"
-                app:pageColor="#00000000"
+                app:pageColor="#00FFFFFF"
                 app:radius="6dp"
                 app:slideInterval="3000"
-                app:strokeColor="@color/colorAccent"
+                app:strokeColor="#FFFFFF"
                 app:strokeWidth="1dp">
 
             </com.synnapps.carouselview.CarouselView>
@@ -384,7 +384,7 @@
                     android:gravity="center"
                     android:fontFamily="@font/times_now_semilight"
                     android:text="FOOD &amp; BEVERAGE"
-                    android:textColor="@color/colorFill"
+                    android:textColor="@color/colorText"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent" />
@@ -432,7 +432,7 @@
                     android:layout_marginBottom="8dp"
                     android:gravity="center"
                     android:text="LAUNDRY"
-                    android:textColor="@color/colorFill"
+                    android:textColor="@color/colorText"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent" />
@@ -480,7 +480,7 @@
                     android:layout_marginBottom="8dp"
                     android:gravity="center"
                     android:text="SPA"
-                    android:textColor="@color/colorFill"
+                    android:textColor="@color/colorText"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent" />
@@ -528,7 +528,7 @@
                     android:layout_marginBottom="8dp"
                     android:gravity="center"
                     android:text="PRODUCT"
-                    android:textColor="@color/colorFill"
+                    android:textColor="@color/colorText"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent" />

@@ -62,7 +62,7 @@ class HistoryAdapter (private val context: Context,
                             tvDetail.text = "- $detailName x $detailQty ${Utilities.getCurrency(itemPrice)}"
                         }
 
-                        tvDetail.textColor = ContextCompat.getColor(context, android.R.color.white)
+                        tvDetail.textColor = ContextCompat.getColor(context, R.color.colorText)
                         itemView.ln_order_detail.addView(tvDetail)
                     }
 

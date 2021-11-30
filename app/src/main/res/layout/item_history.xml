@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
-    app:cardBackgroundColor="@android:color/black"
+    app:cardBackgroundColor="@color/colorFill"
     app:cardCornerRadius="8dp"
     app:cardElevation="4dp">
 
@@ -21,7 +21,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:text="Order number:"
-            android:textColor="@android:color/white"
+            android:textColor="@color/colorText"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -30,7 +30,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
-            android:textColor="@android:color/white"
+            android:textColor="@color/colorText"
             app:layout_constraintBottom_toBottomOf="@+id/textView6"
             app:layout_constraintStart_toEndOf="@+id/textView6"
             app:layout_constraintTop_toTopOf="@+id/textView6"
@@ -42,7 +42,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:text="Status:"
-            android:textColor="@android:color/white"
+            android:textColor="@color/colorText"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView11" />
 
@@ -51,7 +51,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
-            android:textColor="@android:color/white"
+            android:textColor="@color/colorText"
             app:layout_constraintBottom_toBottomOf="@+id/textView12"
             app:layout_constraintStart_toEndOf="@+id/textView12"
             app:layout_constraintTop_toTopOf="@+id/textView12"
@@ -63,7 +63,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:text="Order date:"
-            android:textColor="@android:color/white"
+            android:textColor="@color/colorText"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
@@ -72,7 +72,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
-            android:textColor="@android:color/white"
+            android:textColor="@color/colorText"
             app:layout_constraintBottom_toBottomOf="@+id/textView11"
             app:layout_constraintStart_toEndOf="@+id/textView11"
             app:layout_constraintTop_toTopOf="@+id/textView11"
@@ -84,7 +84,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:text="Note:"
-            android:textColor="@android:color/white"
+            android:textColor="@color/colorText"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView12" />
 
@@ -93,7 +93,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
-            android:textColor="@android:color/white"
+            android:textColor="@color/colorText"
             app:layout_constraintBottom_toBottomOf="@+id/textView14"
             app:layout_constraintStart_toEndOf="@+id/textView14"
             app:layout_constraintTop_toTopOf="@+id/textView14"
@@ -143,7 +143,7 @@
             android:layout_marginTop="4dp"
             android:layout_marginEnd="16dp"
             android:gravity="end"
-            android:textColor="@color/colorAccent"
+            android:textColor="@color/colorText"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/dvd_order_subtotal"
