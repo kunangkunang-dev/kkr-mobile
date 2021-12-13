@@ -28,7 +28,13 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             buildConfigField 'String', "OPEN_WEATHER_KEY", OPEN_WEATHER_KEY
-            buildConfigField 'String', "KUNANG_KUNANG_URL", KUNANG_KUNANG_BASE_URL
+            buildConfigField 'String', "KUNANG_KUNANG_URL", KUNANG_KUNANG_BASE_URL_RELEASE
+            buildConfigField 'String', "OPEN_WEATHER_URL", OPEN_WEATHER_BASE_URL
+            buildConfigField 'String', "ZENDESK_API_KEY", ZENDESK_API_KEY
+        }
+        preRelease {
+            buildConfigField 'String', "OPEN_WEATHER_KEY", OPEN_WEATHER_KEY
+            buildConfigField 'String', "KUNANG_KUNANG_URL", KUNANG_KUNANG_BASE_URL_PRE_RELEASE
             buildConfigField 'String', "OPEN_WEATHER_URL", OPEN_WEATHER_BASE_URL
             buildConfigField 'String', "ZENDESK_API_KEY", ZENDESK_API_KEY
         }
