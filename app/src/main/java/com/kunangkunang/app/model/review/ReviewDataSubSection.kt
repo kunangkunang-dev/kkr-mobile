@@ -6,25 +6,25 @@ import com.google.gson.annotations.SerializedName
 data class ReviewDataSubSection(
     @SerializedName("excelent")
     @Expose
-    var excellent: Int? = 0,
+    var excellent: Int? = null,
 
     @SerializedName("good")
     @Expose
-    var good: Int? = 0,
+    var good: Int? = null,
 
     @SerializedName("fair")
     @Expose
-    var fair: Int? = 0,
+    var fair: Int? = null,
 
     @SerializedName("poor")
     @Expose
-    var poor: Int? = 0,
+    var poor: Int? = null,
 
     @SerializedName("no")
     @Expose
-    var no: Int? = 0,
+    var no: Int? = null,
 
     @SerializedName("yes")
     @Expose
-    var yes: Int? = 0
+    var yes: Int? = null
 )

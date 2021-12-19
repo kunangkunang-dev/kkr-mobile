@@ -18,6 +18,7 @@ import android.text.TextWatcher
 import android.util.Log
 import android.view.View
 import android.widget.ImageView
+import android.widget.RadioButton
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -206,7 +207,7 @@ class MainActivity : AppCompatActivity(), ImageListener, MainView {
             }
 
             it.main?.temp?.minus(273.15)?.roundToInt()?.toString().run {
-                val fullTemp = this + " \u00B0" +"C"
+                val fullTemp = this + " \u00B0" + "C"
                 tv_current_temp.text = fullTemp
             }
 
@@ -844,11 +845,302 @@ class MainActivity : AppCompatActivity(), ImageListener, MainView {
         builder.setView(view)
         dialog = builder.create()
 
-        dialog.setCanceledOnTouchOutside(false)
-        dialog.setCancelable(false)
+        val submitReview: Review =
+            Gson().fromJson(resources.getString(R.string.submitReview), Review::class.java)
+//        val submitReview: Review = Review()
 
-        val submitReview: Review = Review()
         submitReview.transactionNo = checkInNumber
+
+//        val reviewsCount: MutableList<Boolean> = mutableListOf()
+//        for (i in 1..27) {
+//            reviewsCount.add(false)
+//        }
+
+        view.rg_dialog_fo_1.setOnCheckedChangeListener { group, checkedId ->
+            val button = group.findViewById<RadioButton>(checkedId)
+            when (group.indexOfChild(button)) {
+                0 -> submitReview.review?.get(0)?.data?.get(0)?.subData?.poor = 1
+                1 -> submitReview.review?.get(0)?.data?.get(0)?.subData?.fair = 1
+                2 -> submitReview.review?.get(0)?.data?.get(0)?.subData?.good = 1
+                3 -> submitReview.review?.get(0)?.data?.get(0)?.subData?.excellent = 1
+            }
+//            reviewsCount[0] = true
+        }
+
+        view.rg_dialog_fo_2.setOnCheckedChangeListener { group, checkedId ->
+            val button = group.findViewById<RadioButton>(checkedId)
+            when (group.indexOfChild(button)) {
+                0 -> submitReview.review?.get(0)?.data?.get(1)?.subData?.poor = 1
+                1 -> submitReview.review?.get(0)?.data?.get(1)?.subData?.fair = 1
+                2 -> submitReview.review?.get(0)?.data?.get(1)?.subData?.good = 1
+                3 -> submitReview.review?.get(0)?.data?.get(1)?.subData?.excellent = 1
+            }
+//            reviewsCount[1] = true
+        }
+
+        view.rg_dialog_fo_3.setOnCheckedChangeListener { group, checkedId ->
+            val button = group.findViewById<RadioButton>(checkedId)
+            when (group.indexOfChild(button)) {
+                0 -> submitReview.review?.get(0)?.data?.get(2)?.subData?.poor = 1
+                1 -> submitReview.review?.get(0)?.data?.get(2)?.subData?.fair = 1
+                2 -> submitReview.review?.get(0)?.data?.get(2)?.subData?.good = 1
+                3 -> submitReview.review?.get(0)?.data?.get(2)?.subData?.excellent = 1
+            }
+//            reviewsCount[2] = true
+        }
+
+        view.rg_dialog_fo_4.setOnCheckedChangeListener { group, checkedId ->
+            val button = group.findViewById<RadioButton>(checkedId)
+            when (group.indexOfChild(button)) {
+                0 -> submitReview.review?.get(0)?.data?.get(3)?.subData?.poor = 1
+                1 -> submitReview.review?.get(0)?.data?.get(3)?.subData?.fair = 1
+                2 -> submitReview.review?.get(0)?.data?.get(3)?.subData?.good = 1
+                3 -> submitReview.review?.get(0)?.data?.get(3)?.subData?.excellent = 1
+            }
+//            reviewsCount[3] = true
+        }
+
+        view.rg_dialog_fo_5.setOnCheckedChangeListener { group, checkedId ->
+            val button = group.findViewById<RadioButton>(checkedId)
+            when (group.indexOfChild(button)) {
+                0 -> submitReview.review?.get(0)?.data?.get(4)?.subData?.poor = 1
+                1 -> submitReview.review?.get(0)?.data?.get(4)?.subData?.fair = 1
+                2 -> submitReview.review?.get(0)?.data?.get(4)?.subData?.good = 1
+                3 -> submitReview.review?.get(0)?.data?.get(4)?.subData?.excellent = 1
+            }
+//            reviewsCount[4] = true
+        }
+
+        view.rg_dialog_fnb_1.setOnCheckedChangeListener { group, checkedId ->
+            val button = group.findViewById<RadioButton>(checkedId)
+            when (group.indexOfChild(button)) {
+                0 -> submitReview.review?.get(1)?.data?.get(0)?.subData?.poor = 1
+                1 -> submitReview.review?.get(1)?.data?.get(0)?.subData?.fair = 1
+                2 -> submitReview.review?.get(1)?.data?.get(0)?.subData?.good = 1
+                3 -> submitReview.review?.get(1)?.data?.get(0)?.subData?.excellent = 1
+            }
+//            reviewsCount[5] = true
+        }
+
+        view.rg_dialog_fnb_2.setOnCheckedChangeListener { group, checkedId ->
+            val button = group.findViewById<RadioButton>(checkedId)
+            when (group.indexOfChild(button)) {
+                0 -> submitReview.review?.get(1)?.data?.get(1)?.subData?.poor = 1
+                1 -> submitReview.review?.get(1)?.data?.get(1)?.subData?.fair = 1
+                2 -> submitReview.review?.get(1)?.data?.get(1)?.subData?.good = 1
+                3 -> submitReview.review?.get(1)?.data?.get(1)?.subData?.excellent = 1
+            }
+//            reviewsCount[6] = true
+        }
+
+        view.rg_dialog_fnb_3.setOnCheckedChangeListener { group, checkedId ->
+            val button = group.findViewById<RadioButton>(checkedId)
+            when (group.indexOfChild(button)) {
+                0 -> submitReview.review?.get(1)?.data?.get(2)?.subData?.poor = 1
+                1 -> submitReview.review?.get(1)?.data?.get(2)?.subData?.fair = 1
+                2 -> submitReview.review?.get(1)?.data?.get(2)?.subData?.good = 1
+                3 -> submitReview.review?.get(1)?.data?.get(2)?.subData?.excellent = 1
+            }
+//            reviewsCount[7] = true
+        }
+
+        view.rg_dialog_fnb_4.setOnCheckedChangeListener { group, checkedId ->
+            val button = group.findViewById<RadioButton>(checkedId)
+            when (group.indexOfChild(button)) {
+                0 -> submitReview.review?.get(1)?.data?.get(3)?.subData?.poor = 1
+                1 -> submitReview.review?.get(1)?.data?.get(3)?.subData?.fair = 1
+                2 -> submitReview.review?.get(1)?.data?.get(3)?.subData?.good = 1
+                3 -> submitReview.review?.get(1)?.data?.get(3)?.subData?.excellent = 1
+            }
+//            reviewsCount[8] = true
+        }
+
+        view.rg_dialog_fnb_5.setOnCheckedChangeListener { group, checkedId ->
+            val button = group.findViewById<RadioButton>(checkedId)
+            when (group.indexOfChild(button)) {
+                0 -> submitReview.review?.get(1)?.data?.get(4)?.subData?.poor = 1
+                1 -> submitReview.review?.get(1)?.data?.get(4)?.subData?.fair = 1
+                2 -> submitReview.review?.get(1)?.data?.get(4)?.subData?.good = 1
+                3 -> submitReview.review?.get(1)?.data?.get(4)?.subData?.excellent = 1
+            }
+//            reviewsCount[9] = true
+        }
+
+        view.rg_dialog_fnb_6.setOnCheckedChangeListener { group, checkedId ->
+            val button = group.findViewById<RadioButton>(checkedId)
+            when (group.indexOfChild(button)) {
+                0 -> submitReview.review?.get(1)?.data?.get(5)?.subData?.poor = 1
+                1 -> submitReview.review?.get(1)?.data?.get(5)?.subData?.fair = 1
+                2 -> submitReview.review?.get(1)?.data?.get(5)?.subData?.good = 1
+                3 -> submitReview.review?.get(1)?.data?.get(5)?.subData?.excellent = 1
+            }
+//            reviewsCount[10] = true
+        }
+
+        view.rg_dialog_hk_1.setOnCheckedChangeListener { group, checkedId ->
+            val button = group.findViewById<RadioButton>(checkedId)
+            when (group.indexOfChild(button)) {
+                0 -> submitReview.review?.get(2)?.data?.get(0)?.subData?.poor = 1
+                1 -> submitReview.review?.get(2)?.data?.get(0)?.subData?.fair = 1
+                2 -> submitReview.review?.get(2)?.data?.get(0)?.subData?.good = 1
+                3 -> submitReview.review?.get(2)?.data?.get(0)?.subData?.excellent = 1
+            }
+//            reviewsCount[11] = true
+        }
+
+        view.rg_dialog_hk_2.setOnCheckedChangeListener { group, checkedId ->
+            val button = group.findViewById<RadioButton>(checkedId)
+            when (group.indexOfChild(button)) {
+                0 -> submitReview.review?.get(2)?.data?.get(1)?.subData?.poor = 1
+                1 -> submitReview.review?.get(2)?.data?.get(1)?.subData?.fair = 1
+                2 -> submitReview.review?.get(2)?.data?.get(1)?.subData?.good = 1
+                3 -> submitReview.review?.get(2)?.data?.get(1)?.subData?.excellent = 1
+            }
+//            reviewsCount[12] = true
+        }
+
+        view.rg_dialog_hk_3.setOnCheckedChangeListener { group, checkedId ->
+            val button = group.findViewById<RadioButton>(checkedId)
+            when (group.indexOfChild(button)) {
+                0 -> submitReview.review?.get(2)?.data?.get(2)?.subData?.poor = 1
+                1 -> submitReview.review?.get(2)?.data?.get(2)?.subData?.fair = 1
+                2 -> submitReview.review?.get(2)?.data?.get(2)?.subData?.good = 1
+                3 -> submitReview.review?.get(2)?.data?.get(2)?.subData?.excellent = 1
+            }
+//            reviewsCount[13] = true
+        }
+
+        view.rg_dialog_hk_4.setOnCheckedChangeListener { group, checkedId ->
+            val button = group.findViewById<RadioButton>(checkedId)
+            when (group.indexOfChild(button)) {
+                0 -> submitReview.review?.get(2)?.data?.get(3)?.subData?.poor = 1
+                1 -> submitReview.review?.get(2)?.data?.get(3)?.subData?.fair = 1
+                2 -> submitReview.review?.get(2)?.data?.get(3)?.subData?.good = 1
+                3 -> submitReview.review?.get(2)?.data?.get(3)?.subData?.excellent = 1
+            }
+//            reviewsCount[14] = true
+        }
+
+        view.rg_dialog_hk_5.setOnCheckedChangeListener { group, checkedId ->
+            val button = group.findViewById<RadioButton>(checkedId)
+            when (group.indexOfChild(button)) {
+                0 -> submitReview.review?.get(2)?.data?.get(4)?.subData?.poor = 1
+                1 -> submitReview.review?.get(2)?.data?.get(4)?.subData?.fair = 1
+                2 -> submitReview.review?.get(2)?.data?.get(4)?.subData?.good = 1
+                3 -> submitReview.review?.get(2)?.data?.get(4)?.subData?.excellent = 1
+            }
+//            reviewsCount[15] = true
+        }
+
+        view.rg_dialog_hk_6.setOnCheckedChangeListener { group, checkedId ->
+            val button = group.findViewById<RadioButton>(checkedId)
+            when (group.indexOfChild(button)) {
+                0 -> submitReview.review?.get(2)?.data?.get(5)?.subData?.poor = 1
+                1 -> submitReview.review?.get(2)?.data?.get(5)?.subData?.fair = 1
+                2 -> submitReview.review?.get(2)?.data?.get(5)?.subData?.good = 1
+                3 -> submitReview.review?.get(2)?.data?.get(5)?.subData?.excellent = 1
+            }
+//            reviewsCount[16] = true
+        }
+
+        view.rg_dialog_hk_7.setOnCheckedChangeListener { group, checkedId ->
+            val button = group.findViewById<RadioButton>(checkedId)
+            when (group.indexOfChild(button)) {
+                0 -> submitReview.review?.get(2)?.data?.get(6)?.subData?.poor = 1
+                1 -> submitReview.review?.get(2)?.data?.get(6)?.subData?.fair = 1
+                2 -> submitReview.review?.get(2)?.data?.get(6)?.subData?.good = 1
+                3 -> submitReview.review?.get(2)?.data?.get(6)?.subData?.excellent = 1
+            }
+//            reviewsCount[17] = true
+        }
+
+        view.rg_dialog_hk_8.setOnCheckedChangeListener { group, checkedId ->
+            val button = group.findViewById<RadioButton>(checkedId)
+            when (group.indexOfChild(button)) {
+                0 -> submitReview.review?.get(2)?.data?.get(7)?.subData?.poor = 1
+                1 -> submitReview.review?.get(2)?.data?.get(7)?.subData?.fair = 1
+                2 -> submitReview.review?.get(2)?.data?.get(7)?.subData?.good = 1
+                3 -> submitReview.review?.get(2)?.data?.get(7)?.subData?.excellent = 1
+            }
+//            reviewsCount[18] = true
+        }
+
+        view.rg_dialog_other_1.setOnCheckedChangeListener { group, checkedId ->
+            val button = group.findViewById<RadioButton>(checkedId)
+            when (group.indexOfChild(button)) {
+                0 -> submitReview.review?.get(3)?.data?.get(0)?.subData?.poor = 1
+                1 -> submitReview.review?.get(3)?.data?.get(0)?.subData?.fair = 1
+                2 -> submitReview.review?.get(3)?.data?.get(0)?.subData?.good = 1
+                3 -> submitReview.review?.get(3)?.data?.get(0)?.subData?.excellent = 1
+            }
+//            reviewsCount[19] = true
+        }
+
+        view.rg_dialog_ga_1.setOnCheckedChangeListener { group, checkedId ->
+            val button = group.findViewById<RadioButton>(checkedId)
+            when (group.indexOfChild(button)) {
+                0 -> submitReview.review?.get(4)?.data?.get(0)?.subData?.no = 1
+                1 -> submitReview.review?.get(4)?.data?.get(0)?.subData?.yes = 1
+            }
+//            reviewsCount[20] = true
+        }
+
+        view.rg_dialog_ga_2.setOnCheckedChangeListener { group, checkedId ->
+            val button = group.findViewById<RadioButton>(checkedId)
+            when (group.indexOfChild(button)) {
+                0 -> submitReview.review?.get(4)?.data?.get(1)?.subData?.no = 1
+                1 -> submitReview.review?.get(4)?.data?.get(1)?.subData?.yes = 1
+            }
+//            reviewsCount[21] = true
+        }
+
+        view.rg_dialog_ga_3.setOnCheckedChangeListener { group, checkedId ->
+            val button = group.findViewById<RadioButton>(checkedId)
+            when (group.indexOfChild(button)) {
+                0 -> submitReview.review?.get(4)?.data?.get(2)?.subData?.no = 1
+                1 -> submitReview.review?.get(4)?.data?.get(2)?.subData?.yes = 1
+            }
+//            reviewsCount[22] = true
+        }
+
+        view.cb_dialog_review_friend.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                submitReview.info?.friends = 1
+            } else {
+                submitReview.info?.friends = 0
+            }
+//            reviewsCount[23] = true
+        }
+
+        view.cb_dialog_review_travel_agent.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                submitReview.info?.travelAgent = 1
+//                reviewsCount[24] = true
+            } else {
+                submitReview.info?.travelAgent = 0
+//                reviewsCount[24] = false
+            }
+        }
+
+        view.cb_dialog_review_online_booking.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                submitReview.info?.onlineBooking = 1
+//                reviewsCount[25] = true
+            } else {
+                submitReview.info?.onlineBooking = 0
+//                reviewsCount[25] = false
+            }
+        }
+
+        view.cb_dialog_review_others.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                submitReview.info?.others = 1
+//                reviewsCount[26] = true
+            } else {
+                submitReview.info?.others = 0
+//                reviewsCount[26] = false
+            }
+        }
 
 
         view.et_dialog_note.addTextChangedListener(object : TextWatcher {
@@ -871,13 +1163,14 @@ class MainActivity : AppCompatActivity(), ImageListener, MainView {
         }
 
         view.btn_dialog_review_submit.setOnClickListener {
-            if (submitReview.comments.isNullOrBlank()) {
-                Toast.makeText(this, "Please type in comments", Toast.LENGTH_LONG).show()
-
-            } else {
-                dialog.cancel()
-                submittingReview = presenter.submitReview(submitReview)
-            }
+//            if (submitReview.comments.isNullOrBlank()) {
+//                Toast.makeText(this, "Please type in comments", Toast.LENGTH_LONG).show()
+//
+//            } else {
+            dialog.cancel()
+            Log.e("submitReview", submitReview.toString())
+            submittingReview = presenter.submitReview(submitReview)
+//            }
 
         }
 

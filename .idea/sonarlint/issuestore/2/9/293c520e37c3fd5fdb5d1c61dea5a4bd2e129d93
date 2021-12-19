@@ -1,12 +1,12 @@
 
 Hkotlin:S1144æ"/Remove this unused private "launchChat" method.(ŞÀ
-pkotlin:S3776¸"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(Ä¸Ö·ùÿÿÿÿ
-skotlin:S1186ÿ"ZAdd a nested comment explaining why this function is empty or complete the implementation.(ØÕª
-7kotlin:S125›"Remove this commented out code.(Ì›ò™
-xkotlin:S1186û"ZAdd a nested comment explaining why this function is empty or complete the implementation.(’äÎ°úÿÿÿÿ
-7kotlin:S125Ô"Remove this commented out code.(…äæ
 skotlin:S1192•"UDefine a constant instead of duplicating this literal "Guest not checked in" 4 times.(³®‹Ÿúÿÿÿÿ
-7kotlin:S125­"Remove this commented out code.(Å²
-<kotlin:S125’"Remove this commented out code.(üÈ«æşÿÿÿÿ
+skotlin:S1186ÿ"ZAdd a nested comment explaining why this function is empty or complete the implementation.(ØÕª
+pkotlin:S3776¸"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(Ä¸Ö·ùÿÿÿÿ
 <kotlin:S125¤"Remove this commented out code.(á«®Îúÿÿÿÿ
+<kotlin:S125’"Remove this commented out code.(üÈ«æşÿÿÿÿ
+xkotlin:S1186û"ZAdd a nested comment explaining why this function is empty or complete the implementation.(’äÎ°úÿÿÿÿ
+7kotlin:S125­"Remove this commented out code.(Å²
 Vkotlin:S1144ø"8Remove this unused private "moveToTitleActivity" method.(Õ¬«¤şÿÿÿÿ
+7kotlin:S125›"Remove this commented out code.(Ì›ò™
+7kotlin:S125Ô"Remove this commented out code.(…äæ
