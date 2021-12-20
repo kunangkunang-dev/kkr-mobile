@@ -116,6 +116,10 @@ class LaundryActivity : AppCompatActivity(), TransactionView<Laundry?>, OrderVie
         }
     }
 
+    override fun addNotes(index: Int?) {
+
+    }
+
     override fun loadTransaction(data: TransactionResponse?) {
         data?.status?.let {
             if (it == 200) {

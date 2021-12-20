@@ -50,6 +50,11 @@
         app:srcCompat="@drawable/ic_delete" />
 
     <EditText
+        android:focusable="false"
+        android:clickable="true"
+        android:longClickable="false"
+        android:inputType="none"
+        android:cursorVisible="false"
         android:maxLines="2"
         android:ellipsize="end"
         android:id="@+id/etNotes"

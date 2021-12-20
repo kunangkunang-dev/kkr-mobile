@@ -178,6 +178,10 @@ class AmenitiesActivity : AppCompatActivity(), TransactionView<Amenities?>, Orde
         }
     }
 
+    override fun addNotes(index: Int?) {
+
+    }
+
     override fun loadTransaction(data: TransactionResponse?) {
         data?.status?.let {
             if (it == 200) {

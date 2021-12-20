@@ -54,6 +54,12 @@ class OrderAdapter(private val context: Context,
                     itemView.tv_total_price_value.visibility = View.GONE
                     itemView.dvd_price.visibility = View.GONE
                 }
+
+                itemView.etNotes.setText(order.notes)
+
+                itemView.etNotes.setOnClickListener {
+                    view.addNotes(adapterPosition)
+                }
             }
         }
     }

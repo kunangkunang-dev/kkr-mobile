@@ -34,8 +34,12 @@ import com.kunangkunang.app.view.InternalTransactionView
 import com.kunangkunang.app.view.OrderView
 import com.kunangkunang.app.view.TransactionView
 import kotlinx.android.synthetic.main.activity_fnb.*
+import kotlinx.android.synthetic.main.dialog_comment.*
+import kotlinx.android.synthetic.main.dialog_comment.view.*
 import kotlinx.android.synthetic.main.dialog_name_check.view.*
 import kotlinx.android.synthetic.main.dialog_transaction.view.*
+import kotlinx.android.synthetic.main.dialog_transaction.view.btn_dialog_cancel
+import kotlinx.android.synthetic.main.dialog_transaction.view.et_dialog_notes
 import kotlinx.coroutines.*
 import kotlin.properties.Delegates
 
@@ -188,6 +192,10 @@ class FnbActivity : AppCompatActivity(), TransactionView<FnbCategory?>, Internal
             orderAdapter.notifyDataSetChanged()
             isOrderEmpty()
         }
+    }
+
+    override fun addNotes(index: Int?) {
+        openCommentDialog(index)
     }
 
     override fun loadTransaction(data: TransactionResponse?) {
@@ -388,6 +396,33 @@ class FnbActivity : AppCompatActivity(), TransactionView<FnbCategory?>, Internal
 
         dialog.show()
         setDimensionLarge(dialog)
+
+    }
+
+    private fun openCommentDialog(index: Int?) {
+        //initiate dialog builder
+        val builder = AlertDialog.Builder(this)
+        val view = layoutInflater.inflate(R.layout.dialog_comment, null)
+        builder.setView(view)
+
+        //create dialog
+        val dialog = builder.create()
+        dialog.setCancelable(false)
+        dialog.setCanceledOnTouchOutside(false)
+        index?.let {orderIndex ->
+            view.et_dialog_notes.setText(order[orderIndex]?.notes)
+            view.btn_dialog_cancel.setOnClickListener { dialog.cancel() }
+            view.btn_dialog_done.setOnClickListener {
+                order[orderIndex]?.let { item ->
+                    item.notes = view.et_dialog_notes.text.toString()
+                }
+                orderAdapter.notifyDataSetChanged()
+                dialog.cancel()
+            }
+        }
+
+        dialog.show()
+        setDimensionSmall(dialog)
 
     }
 

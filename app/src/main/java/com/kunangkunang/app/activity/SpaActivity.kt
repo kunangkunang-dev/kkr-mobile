@@ -140,6 +140,10 @@ class SpaActivity : AppCompatActivity(), TransactionView<Spa?>, OrderView<Order?
         }
     }
 
+    override fun addNotes(index: Int?) {
+
+    }
+
     private fun initiateTask() {
         // Get shared preferences
         val sharedPreferences =
