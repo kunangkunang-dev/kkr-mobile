@@ -34,5 +34,9 @@ data class TransactionDetails(
 
     @SerializedName("price")
     @Expose
-    val price: Int? = null
+    val price: Int? = null,
+
+    @SerializedName("notes")
+    @Expose
+    val notes: String? = null
 )

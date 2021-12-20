@@ -173,7 +173,18 @@ class FnbActivity : AppCompatActivity(), TransactionView<FnbCategory?>, Internal
     override fun removeOrder(index: Int?) {
         // Remove item from orderlist
         index?.let {
-            order.removeAt(index)
+
+            order[it]?.let { item ->
+                val newQty = item.orderQuantity?.minus(1)
+                newQty?.let { qty ->
+                    if (qty <= 0) {
+                        order.removeAt(index)
+                    } else {
+                        item.orderQuantity = qty
+                    }
+                }
+            }
+
             orderAdapter.notifyDataSetChanged()
             isOrderEmpty()
         }
