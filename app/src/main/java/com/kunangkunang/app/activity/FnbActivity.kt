@@ -154,7 +154,7 @@ class FnbActivity : AppCompatActivity(), TransactionView<FnbCategory?>, Internal
             if (order.isNotEmpty()) {
                 for (item in order) {
                     item?.let {
-                        if (it == data) {
+                        if (it.itemId == data.itemId) {
                             val newQty = data.orderQuantity?.let { qty ->
                                 item.orderQuantity?.plus(qty)
                             }
@@ -451,6 +451,7 @@ class FnbActivity : AppCompatActivity(), TransactionView<FnbCategory?>, Internal
                     val itemCategoryId = it.categoryId
                     val itemQty = it.orderQuantity
                     val price = it.orderPrice
+                    val notes = it.notes
 
                     totalPrice += itemQty?.let { it1 -> price?.times(it1) } ?: 0
 
@@ -462,7 +463,8 @@ class FnbActivity : AppCompatActivity(), TransactionView<FnbCategory?>, Internal
                         null,
                         null,
                         null,
-                        price
+                        price,
+                        notes
                     )
                     details.add(detail)
                 }
