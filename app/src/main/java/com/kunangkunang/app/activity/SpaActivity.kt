@@ -31,7 +31,10 @@ import com.kunangkunang.app.presenter.SpaPresenter
 import com.kunangkunang.app.view.OrderView
 import com.kunangkunang.app.view.TransactionView
 import kotlinx.android.synthetic.main.activity_spa.*
+import kotlinx.android.synthetic.main.dialog_comment.view.*
 import kotlinx.android.synthetic.main.dialog_transaction.view.*
+import kotlinx.android.synthetic.main.dialog_transaction.view.btn_dialog_cancel
+import kotlinx.android.synthetic.main.dialog_transaction.view.et_dialog_notes
 import kotlinx.coroutines.*
 import kotlin.properties.Delegates
 
@@ -111,12 +114,13 @@ class SpaActivity : AppCompatActivity(), TransactionView<Spa?>, OrderView<Order?
             if (order.isNotEmpty()) {
                 for (item in order) {
                     item?.let {
-                        if (it == data) {
+                        if (it.itemId == data.itemId) {
                             val newQty = data.orderQuantity?.let { qty ->
                                 item.orderQuantity?.plus(qty)
                             }
 
                             item.orderQuantity = newQty
+                            subtractSpaAvailability(data)
                             orderAdapter.notifyDataSetChanged()
                             isOrderEmpty()
                             return
@@ -126,6 +130,7 @@ class SpaActivity : AppCompatActivity(), TransactionView<Spa?>, OrderView<Order?
             }
 
             order.add(data)
+            subtractSpaAvailability(data)
             orderAdapter.notifyDataSetChanged()
             isOrderEmpty()
         }
@@ -134,14 +139,26 @@ class SpaActivity : AppCompatActivity(), TransactionView<Spa?>, OrderView<Order?
     override fun removeOrder(index: Int?) {
         // Remove item from orderlist
         index?.let {
-            order.removeAt(index)
+
+            order[it]?.let { item ->
+                val newQty = item.orderQuantity?.minus(1)
+                newQty?.let { qty ->
+                    if (qty <= 0) {
+                        order.removeAt(index)
+                    } else {
+                        item.orderQuantity = qty
+                    }
+                }
+                addSpaAvailability(item)
+            }
+
             orderAdapter.notifyDataSetChanged()
             isOrderEmpty()
         }
     }
 
     override fun addNotes(index: Int?) {
-
+        openCommentDialog(index)
     }
 
     private fun initiateTask() {
@@ -248,6 +265,24 @@ class SpaActivity : AppCompatActivity(), TransactionView<Spa?>, OrderView<Order?
         }
     }
 
+    private fun subtractSpaAvailability(data: Order) {
+        val newSpa = spaSchedules.find { it?.id == data.itemId }
+        val index = spaSchedules.indexOf(newSpa)
+        newSpa?.spaAvailability = newSpa?.spaAvailability?.minus(1)
+
+        spaSchedules[index] = newSpa
+        adapter.notifyDataSetChanged()
+    }
+
+    private fun addSpaAvailability(data: Order) {
+        val newSpa = spaSchedules.find { it?.id == data.itemId }
+        val index = spaSchedules.indexOf(newSpa)
+        newSpa?.spaAvailability = newSpa?.spaAvailability?.plus(1)
+
+        spaSchedules[index] = newSpa
+        adapter.notifyDataSetChanged()
+    }
+
     private fun isOrderEmpty() {
         // Check whether order list is empty or not then show/hide label
         if (order.isNotEmpty()) {
@@ -255,6 +290,33 @@ class SpaActivity : AppCompatActivity(), TransactionView<Spa?>, OrderView<Order?
         } else {
             tv_spa_empty.visibility = View.VISIBLE
         }
+    }
+
+    private fun openCommentDialog(index: Int?) {
+        //initiate dialog builder
+        val builder = AlertDialog.Builder(this)
+        val view = layoutInflater.inflate(R.layout.dialog_comment, null)
+        builder.setView(view)
+
+        //create dialog
+        val dialog = builder.create()
+        dialog.setCancelable(false)
+        dialog.setCanceledOnTouchOutside(false)
+        index?.let {orderIndex ->
+            view.et_dialog_notes.setText(order[orderIndex]?.notes)
+            view.btn_dialog_cancel.setOnClickListener { dialog.cancel() }
+            view.btn_dialog_done.setOnClickListener {
+                order[orderIndex]?.let { item ->
+                    item.notes = view.et_dialog_notes.text.toString()
+                }
+                orderAdapter.notifyDataSetChanged()
+                dialog.cancel()
+            }
+        }
+
+        dialog.show()
+        setDimensionSmall(dialog)
+
     }
 
     private fun openTransactionDialog() {
@@ -284,6 +346,7 @@ class SpaActivity : AppCompatActivity(), TransactionView<Spa?>, OrderView<Order?
                     val price = it.orderPrice
                     val spaStart = it.spaStart
                     val spaEnd = it.spaEnd
+                    val notes = it.notes
 
                     totalPrice += itemQty?.let { it1 -> price?.times(it1) } ?: 0
 
@@ -295,7 +358,8 @@ class SpaActivity : AppCompatActivity(), TransactionView<Spa?>, OrderView<Order?
                         itemId,
                         spaStart?.substring(0, spaStart.length - 3),
                         spaEnd?.substring(0, spaEnd.length - 3),
-                        price
+                        price,
+                        notes
                     )
                     details.add(detail)
                 }
@@ -312,8 +376,9 @@ class SpaActivity : AppCompatActivity(), TransactionView<Spa?>, OrderView<Order?
                 details
             )
             val transaction = Transaction(transactionData)
-
+            Log.e("transactionPayload", transaction.toString())
             // Post transaction to server
+
             presenter.postTransaction(transaction)
 
             // Close dialog

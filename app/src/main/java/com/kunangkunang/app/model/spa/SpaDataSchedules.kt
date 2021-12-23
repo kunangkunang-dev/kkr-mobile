@@ -18,5 +18,9 @@ data class SpaDataSchedules(
     @SerializedName("days")
     val days: String? = null,
 
-    val price: Int? = null
+    val price: Int? = null,
+
+    @SerializedName("spa_availability")
+    var spaAvailability: Int? = null
+
 )

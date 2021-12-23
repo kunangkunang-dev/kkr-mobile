@@ -20,7 +20,7 @@ import java.util.*
 object Utilities {
     fun getCurrency(value: Int): String {
         val decimalFormat = DecimalFormat("#,###.-")
-        return "Rp${decimalFormat.format(value)}"
+        return "Rp ${decimalFormat.format(value)}"
     }
 
     fun generateTransactiondate(): String {

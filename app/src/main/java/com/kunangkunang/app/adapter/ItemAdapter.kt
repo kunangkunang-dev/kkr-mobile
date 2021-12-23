@@ -24,6 +24,8 @@ class ItemAdapter<T>(private val context: Context,
 
     inner class FnbViewHolder(view: View): RecyclerView.ViewHolder(view) {
         fun bindData(item: T?) {
+            itemView.clCardDisabled.visibility = View.GONE
+
             category?.let {
                 when (category) {
                     Constants.FNB -> {

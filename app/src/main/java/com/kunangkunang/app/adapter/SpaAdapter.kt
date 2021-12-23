@@ -1,9 +1,11 @@
 package com.kunangkunang.app.adapter
 
 import android.content.Context
+import android.graphics.drawable.ColorDrawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.kunangkunang.app.R
@@ -23,11 +25,19 @@ class SpaAdapter(private val context: Context,
                  var price: Int?,
                  private val view: OrderView<Order?>): RecyclerView.Adapter<SpaAdapter.SpaAdapterViewHolder>() {
     inner class SpaAdapterViewHolder(view: View): RecyclerView.ViewHolder(view) {
-        fun bindData(item: SpaDataSchedules?) {
-            item?.let { it ->
-                val day = it.days
-                val from = it.from
-                val to = it.to
+        fun bindData(item: SpaDataSchedules?, position: Int) {
+            item?.let { spaDataSchedules ->
+                val day = spaDataSchedules.days
+                val from = spaDataSchedules.from
+                val to = spaDataSchedules.to
+
+                if (spaDataSchedules.spaAvailability!! <= 0) {
+                    itemView.clCardDisabled.visibility = View.VISIBLE
+                    itemView.tv_add_item.visibility = View.GONE
+                }else{
+                    itemView.clCardDisabled.visibility = View.GONE
+                    itemView.tv_add_item.visibility = View.VISIBLE
+                }
 
                 image?.let {
                     Glide.with(itemView)
@@ -64,6 +74,6 @@ class SpaAdapter(private val context: Context,
     }
 
     override fun onBindViewHolder(holder: SpaAdapterViewHolder, position: Int) {
-        holder.bindData(data[holder.adapterPosition])
+        holder.bindData(data[holder.adapterPosition], holder.adapterPosition)
     }
 }

@@ -5,4 +5,5 @@
     <color name="colorPrimaryDark">#323e48</color>
     <color name="colorAccent">#2a2b30</color>
     <color name="colorText">#f5f1e8</color>
+    <color name="colorCardDisabled">#80000000</color>
 </resources>
