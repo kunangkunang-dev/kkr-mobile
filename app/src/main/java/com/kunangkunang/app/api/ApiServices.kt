@@ -12,6 +12,8 @@ import com.kunangkunang.app.model.item.Item
 import com.kunangkunang.app.model.laundry.Laundry
 import com.kunangkunang.app.model.login.Login
 import com.kunangkunang.app.model.login.RoomRequest
+import com.kunangkunang.app.model.login.Staff
+import com.kunangkunang.app.model.login.StaffRequest
 import com.kunangkunang.app.model.logout.Logout
 import com.kunangkunang.app.model.news.DetailNews
 import com.kunangkunang.app.model.news.News
@@ -78,6 +80,11 @@ interface ApiServices {
     fun getLoginData(
         @Body loginData: RoomRequest
     ): Call<Login>
+
+    @POST("event/staff-login")
+    fun getStaffLoginData(
+        @Body loginData: StaffRequest
+    ): Call<Staff>
 
     @POST("api/room/checkout")
     fun checkOut(@Body checkout: Checkout): Call<Status>

@@ -12,14 +12,15 @@ import com.kunangkunang.app.model.item.Item
 import com.kunangkunang.app.model.laundry.Laundry
 import com.kunangkunang.app.model.login.Login
 import com.kunangkunang.app.model.login.RoomRequest
+import com.kunangkunang.app.model.login.Staff
+import com.kunangkunang.app.model.login.StaffRequest
 import com.kunangkunang.app.model.logout.Logout
 import com.kunangkunang.app.model.news.DetailNews
 import com.kunangkunang.app.model.news.News
 import com.kunangkunang.app.model.review.Review
-import com.kunangkunang.app.model.status.Status
 import com.kunangkunang.app.model.room.Room
-import com.kunangkunang.app.model.room.RoomData
 import com.kunangkunang.app.model.spa.Spa
+import com.kunangkunang.app.model.status.Status
 import com.kunangkunang.app.model.transaction.Transaction
 import com.kunangkunang.app.model.transaction.TransactionResponse
 import com.kunangkunang.app.model.weather.Weather
@@ -102,7 +103,10 @@ class AppRepository {
                     callback.onDataError()
                 }
 
-                override fun onResponse(call: Call<FnbCategory?>, response: Response<FnbCategory?>?) {
+                override fun onResponse(
+                    call: Call<FnbCategory?>,
+                    response: Response<FnbCategory?>?
+                ) {
                     response?.let {
                         if (it.isSuccessful) {
                             callback.onDataLoaded(it.body())
@@ -157,7 +161,10 @@ class AppRepository {
 
     }
 
-    fun postTransaction(transaction: Transaction, callback: AppRepositoryCallback<TransactionResponse?>) {
+    fun postTransaction(
+        transaction: Transaction,
+        callback: AppRepositoryCallback<TransactionResponse?>
+    ) {
         ApiClient
             .kunangKunangAPIServices
             .postTransaction(transaction)
@@ -167,7 +174,8 @@ class AppRepository {
                 }
 
                 override fun onResponse(
-                    call: Call<TransactionResponse?>, response: Response<TransactionResponse?>?) {
+                    call: Call<TransactionResponse?>, response: Response<TransactionResponse?>?
+                ) {
                     response?.let {
                         if (it.isSuccessful) {
                             callback.onDataLoaded(it.body())
@@ -377,6 +385,27 @@ class AppRepository {
             })
     }
 
+    fun staffLogin(email: String, password: String, callback: AppRepositoryCallback<Staff?>) {
+        ApiClient
+            .kunangKunangAPIServices
+            .getStaffLoginData(StaffRequest(email = email, password = password))
+            .enqueue(object : Callback<Staff?> {
+                override fun onFailure(call: Call<Staff?>, t: Throwable) {
+                    callback.onDataError()
+                }
+
+                override fun onResponse(call: Call<Staff?>, response: Response<Staff?>?) {
+                    response?.let {
+                        if (it.isSuccessful) {
+                            callback.onDataLoaded(it.body())
+                        } else {
+                            callback.onDataError()
+                        }
+                    }
+                }
+            })
+    }
+
     fun verifyPassword(password: String, callback: AppRepositoryCallback<Status?>) {
         ApiClient
             .kunangKunangAPIServices
@@ -425,7 +454,7 @@ class AppRepository {
             .requestHelp(roomName)
             .enqueue(object : Callback<Status?> {
                 override fun onFailure(call: Call<Status?>, t: Throwable) {
-                   callback.onDataError()
+                    callback.onDataError()
                 }
 
                 override fun onResponse(call: Call<Status?>, response: Response<Status?>?) {

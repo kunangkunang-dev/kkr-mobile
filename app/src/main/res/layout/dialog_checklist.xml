@@ -11,6 +11,11 @@
         android:layout_height="wrap_content">
 
         <EditText
+            android:focusable="false"
+            android:clickable="false"
+            android:longClickable="false"
+            android:inputType="none"
+            android:cursorVisible="false"
             android:id="@+id/et_checklist_name"
             android:layout_width="match_parent"
             android:layout_height="60dp"
@@ -21,7 +26,6 @@
             android:ems="10"
             android:hint="Input employee name..."
             android:imeOptions="actionDone"
-            android:inputType="textPersonName"
             android:paddingStart="16dp"
             android:paddingEnd="16dp"
             android:textColor="@android:color/black" />

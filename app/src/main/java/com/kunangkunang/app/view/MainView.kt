@@ -4,6 +4,7 @@ import com.kunangkunang.app.model.banner.Banner
 import com.kunangkunang.app.model.config.Config
 import com.kunangkunang.app.model.customer.Customer
 import com.kunangkunang.app.model.history.History
+import com.kunangkunang.app.model.login.Staff
 import com.kunangkunang.app.model.logout.Logout
 import com.kunangkunang.app.model.menu.Menu
 import com.kunangkunang.app.model.news.News
@@ -21,6 +22,7 @@ interface MainView {
     fun setTotalPrice(price: Int)
 
     fun notifyPasswordStatus(data: Status?)
+    fun notifyStaffStatus(data: Staff?)
     fun notifySubmitItemStatus(data: Status?)
     fun notifyCheckoutStatus(data: Status?)
     fun notifyLogoutStatus(data: Logout?)
@@ -36,6 +38,7 @@ interface MainView {
     fun submitItemFailed()
     fun configFailed()
     fun passwordFailed()
+    fun staffFailed()
     fun historyFailed()
     fun requestHelpFailed()
     fun submitReviewFailed()

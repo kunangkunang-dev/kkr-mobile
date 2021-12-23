@@ -26,6 +26,7 @@ import com.kunangkunang.app.model.history.History
 import com.kunangkunang.app.model.item.Item
 import com.kunangkunang.app.model.item.ItemDetails
 import com.kunangkunang.app.model.login.LoginDataChecklistItem
+import com.kunangkunang.app.model.login.Staff
 import com.kunangkunang.app.model.logout.Logout
 import com.kunangkunang.app.model.menu.Menu
 import com.kunangkunang.app.model.news.News
@@ -196,7 +197,6 @@ class MainPresenter(private val context: Context,
     fun generateItemChecklist(roomId: Int,
                               checkinId: Int,
                               employeeName: String,
-                              password: String,
                               data: List<LoginDataChecklistItem?>) : Item {
         val details: MutableList<ItemDetails> = mutableListOf()
 
@@ -254,6 +254,20 @@ class MainPresenter(private val context: Context,
 
                 override fun onDataError() {
                     view.passwordFailed()
+                }
+            })
+        }
+    }
+
+    fun staffLogin(email: String, password: String): Job{
+        return scope.launch {
+            repository.staffLogin(email, password, object : AppRepositoryCallback<Staff?> {
+                override fun onDataLoaded(data: Staff?) {
+                    view.notifyStaffStatus(data)
+                }
+
+                override fun onDataError() {
+                    view.staffFailed()
                 }
             })
         }

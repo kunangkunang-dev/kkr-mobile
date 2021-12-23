@@ -40,6 +40,7 @@ import com.kunangkunang.app.model.config.Config
 import com.kunangkunang.app.model.customer.Customer
 import com.kunangkunang.app.model.history.History
 import com.kunangkunang.app.model.login.Login
+import com.kunangkunang.app.model.login.Staff
 import com.kunangkunang.app.model.logout.Logout
 import com.kunangkunang.app.model.menu.Menu
 import com.kunangkunang.app.model.news.News
@@ -111,6 +112,7 @@ class MainActivity : AppCompatActivity(), ImageListener, MainView {
     private var btnState: Boolean = false
 
     private var password by Delegates.notNull<String>()
+    private var email by Delegates.notNull<String>()
     private var roomId by Delegates.notNull<Int>()
     private var roomName by Delegates.notNull<String>()
     private var checkInNumber by Delegates.notNull<String>()
@@ -312,6 +314,20 @@ class MainActivity : AppCompatActivity(), ImageListener, MainView {
         }
     }
 
+    override fun notifyStaffStatus(data: Staff?) {
+        data?.let {
+            if (it.status == 200) {
+                dialog.cancel()
+                data.data?.let { it1 -> openCheckListDialog(it1) }
+            } else {
+                view.et_dialog_pasword.text = null
+                view.et_dialog_pasword.hint = "Wrong email or password"
+                view.etDialogEmail.text = null
+                view.etDialogEmail.hint = "Wrong email or password"
+            }
+        }
+    }
+
     override fun notifySubmitItemStatus(data: Status?) {
         data?.let {
             if (it.status == 200) {
@@ -401,6 +417,10 @@ class MainActivity : AppCompatActivity(), ImageListener, MainView {
 
     override fun passwordFailed() {
         Log.e("PASSWORD", "Error")
+    }
+
+    override fun staffFailed() {
+        Log.e("STAFF", "Error")
     }
 
     override fun historyFailed() {
@@ -621,27 +641,29 @@ class MainActivity : AppCompatActivity(), ImageListener, MainView {
         builder.setView(view)
 
         dialog = builder.create()
-        dialog.setCancelable(false)
-        dialog.setCanceledOnTouchOutside(false)
+//        dialog.setCancelable(false)
+//        dialog.setCanceledOnTouchOutside(false)
 
         view.btn_dialog_checkout_cancel.setOnClickListener { dialog.cancel() }
         view.btn_dialog_checkout.setOnClickListener {
-            when {
-                view.et_dialog_pasword.text.isEmpty() -> {
+                if(view.etDialogEmail.text.isEmpty()) {
+                    view.etDialogEmail.hint = "Email can not be empty"
+                }
+                if(view.et_dialog_pasword.text.isEmpty())  {
                     view.et_dialog_pasword.hint = "Password can not be empty"
                 }
-                else -> {
+                if(view.et_dialog_pasword.text.isNotEmpty() && view.etDialogEmail.text.isNotEmpty())  {
+                    email = view.etDialogEmail.text.toString()
                     password = view.et_dialog_pasword.text.toString()
-                    verifying = presenter.verifyPassword(password)
+                    verifying = presenter.staffLogin(email, password)
                 }
-            }
         }
 
         dialog.show()
-        setDimensionLarge(dialog)
+        setDimensionSmall(dialog)
     }
 
-    private fun openCheckListDialog(password: String) {
+    private fun openCheckListDialog(name: String) {
         val builder = AlertDialog.Builder(this)
         view = layoutInflater.inflate(R.layout.dialog_checklist, null)
         builder.setView(view)
@@ -649,6 +671,8 @@ class MainActivity : AppCompatActivity(), ImageListener, MainView {
         dialog = builder.create()
         dialog.setCancelable(false)
         dialog.setCanceledOnTouchOutside(false)
+
+        view.et_checklist_name.setText(name)
 
         login?.data?.checklist?.item?.let {
             val adapter = ChecklistAdapter(this, it)
@@ -671,7 +695,6 @@ class MainActivity : AppCompatActivity(), ImageListener, MainView {
                         roomId,
                         checkInId,
                         view.et_checklist_name.text.toString(),
-                        password,
                         detail
                     )
                     submittingItem = presenter.submitItem(item)
