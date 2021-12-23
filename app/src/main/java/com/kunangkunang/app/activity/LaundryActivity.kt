@@ -18,6 +18,7 @@ import com.kunangkunang.app.constant.Constants
 import com.kunangkunang.app.helper.Utilities
 import com.kunangkunang.app.helper.hideSystemBar
 import com.kunangkunang.app.helper.setDimensionLarge
+import com.kunangkunang.app.helper.setDimensionSmall
 import com.kunangkunang.app.model.customer.Customer
 import com.kunangkunang.app.model.laundry.Laundry
 import com.kunangkunang.app.model.laundry.LaundryData
@@ -31,7 +32,10 @@ import com.kunangkunang.app.presenter.LaundryPresenter
 import com.kunangkunang.app.view.OrderView
 import com.kunangkunang.app.view.TransactionView
 import kotlinx.android.synthetic.main.activity_laundry.*
+import kotlinx.android.synthetic.main.dialog_comment.view.*
 import kotlinx.android.synthetic.main.dialog_transaction.view.*
+import kotlinx.android.synthetic.main.dialog_transaction.view.btn_dialog_cancel
+import kotlinx.android.synthetic.main.dialog_transaction.view.et_dialog_notes
 import kotlinx.coroutines.*
 import kotlin.properties.Delegates
 
@@ -87,7 +91,7 @@ class LaundryActivity : AppCompatActivity(), TransactionView<Laundry?>, OrderVie
             if (order.isNotEmpty()) {
                 for (item in order) {
                     item?.let {
-                        if (it == data) {
+                        if (it.itemId == data.itemId) {
                             val newQty = data.orderQuantity?.let { qty ->
                                 item.orderQuantity?.plus(qty)
                             }
@@ -110,14 +114,25 @@ class LaundryActivity : AppCompatActivity(), TransactionView<Laundry?>, OrderVie
     override fun removeOrder(index: Int?) {
         // Remove item from orderlist
         index?.let {
-            order.removeAt(index)
+
+            order[it]?.let { item ->
+                val newQty = item.orderQuantity?.minus(1)
+                newQty?.let { qty ->
+                    if (qty <= 0) {
+                        order.removeAt(index)
+                    } else {
+                        item.orderQuantity = qty
+                    }
+                }
+            }
+
             orderAdapter.notifyDataSetChanged()
             isOrderEmpty()
         }
     }
 
     override fun addNotes(index: Int?) {
-
+        openCommentDialog(index)
     }
 
     override fun loadTransaction(data: TransactionResponse?) {
@@ -206,6 +221,33 @@ class LaundryActivity : AppCompatActivity(), TransactionView<Laundry?>, OrderVie
         }
     }
 
+    private fun openCommentDialog(index: Int?) {
+        //initiate dialog builder
+        val builder = AlertDialog.Builder(this)
+        val view = layoutInflater.inflate(R.layout.dialog_comment, null)
+        builder.setView(view)
+
+        //create dialog
+        val dialog = builder.create()
+        dialog.setCancelable(false)
+        dialog.setCanceledOnTouchOutside(false)
+        index?.let {orderIndex ->
+            view.et_dialog_notes.setText(order[orderIndex]?.notes)
+            view.btn_dialog_cancel.setOnClickListener { dialog.cancel() }
+            view.btn_dialog_done.setOnClickListener {
+                order[orderIndex]?.let { item ->
+                    item.notes = view.et_dialog_notes.text.toString()
+                }
+                orderAdapter.notifyDataSetChanged()
+                dialog.cancel()
+            }
+        }
+
+        dialog.show()
+        setDimensionSmall(dialog)
+
+    }
+
     private fun openTransactionDialog() {
         // Initiate dialog builder
         val builder = AlertDialog.Builder(this)
@@ -231,6 +273,7 @@ class LaundryActivity : AppCompatActivity(), TransactionView<Laundry?>, OrderVie
                     val itemCategoryId = it.categoryId
                     val itemQty = it.orderQuantity
                     val price = it.orderPrice
+                    val notes = it.notes
 
                     totalPrice += itemQty?.let { it1 -> price?.times(it1) } ?: 0
 
@@ -242,7 +285,8 @@ class LaundryActivity : AppCompatActivity(), TransactionView<Laundry?>, OrderVie
                         null,
                         null,
                         null,
-                        price
+                        price,
+                        notes
                     )
                     details.add(detail)
                 }
