@@ -50,6 +50,7 @@ class HistoryAdapter (private val context: Context,
                         val schedule = detail?.spaSchedule?.days
                         val from = detail?.spaSchedule?.from
                         val to = detail?.spaSchedule?.to
+                        val detailNotes = detail?.notes
 
                         if (detailQty != null && price != null) {
                             itemPrice = detailQty.times(price)
@@ -58,8 +59,15 @@ class HistoryAdapter (private val context: Context,
 
                         if (detailName != null && schedule != null && from != null && to != null) {
                             tvDetail.text = "- $detailName ($schedule, $from-$to) x $detailQty ${Utilities.getCurrency(itemPrice)}"
+                            if(!detailNotes.isNullOrBlank()){
+                                tvDetail.text = "${tvDetail.text} \nadditional note: ${detailNotes}"
+                            }
+
                         } else {
                             tvDetail.text = "- $detailName x $detailQty ${Utilities.getCurrency(itemPrice)}"
+                            if(!detailNotes.isNullOrBlank()){
+                                tvDetail.text = "${tvDetail.text} \nadditional note: ${detailNotes}"
+                            }
                         }
 
                         tvDetail.textColor = ContextCompat.getColor(context, R.color.colorText)

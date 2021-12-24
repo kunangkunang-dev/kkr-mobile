@@ -37,5 +37,8 @@ data class HistoryDataDetails(
     val spaEnd: String? = null,
 
     @SerializedName("spa_schedule")
-    val spaSchedule: HistoryDataDetailsSpa? = null
+    val spaSchedule: HistoryDataDetailsSpa? = null,
+
+    @SerializedName("notes")
+    val notes: String? = null
 )
