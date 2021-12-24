@@ -60,7 +60,7 @@
             android:layout_height="24dp"
             android:gravity="center"
             android:text="Service"
-            android:textColor="@color/colorText"
+            android:textColor="@color/zui_color_black_100"
             app:layout_constraintEnd_toStartOf="@+id/guideline4"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

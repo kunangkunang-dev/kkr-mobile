@@ -57,6 +57,9 @@ class TitleActivity : AppCompatActivity() {
 
             Constants.AMENITIES ->
                 startActivity(Intent(this, AmenitiesActivity::class.java))
+
+            Constants.ACTIVITIES ->
+                startActivity(Intent(this, ActivitiesActivity::class.java))
         }
 
         // Finish title activity

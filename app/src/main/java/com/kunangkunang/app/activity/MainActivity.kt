@@ -576,7 +576,7 @@ class MainActivity : AppCompatActivity(), ImageListener, MainView {
         cv_amenities.setOnClickListener {
             if (customer?.data?.customer != null) {
                 //            moveToTitleActivity(Constants.AMENITIES, config?.data?.amenitiesImage)
-                startActivity(Intent(this, AmenitiesActivity::class.java))
+                startActivity(Intent(this, ActivitiesActivity::class.java))
             } else {
                 Toast.makeText(this, "Guest not checked in", Toast.LENGTH_LONG).show()
             }

@@ -9,6 +9,7 @@ import com.bumptech.glide.Glide
 import com.kunangkunang.app.R
 import com.kunangkunang.app.constant.Constants
 import com.kunangkunang.app.helper.Utilities
+import com.kunangkunang.app.model.activities.ActivitiesData
 import com.kunangkunang.app.model.amenities.AmenitiesData
 import com.kunangkunang.app.model.fnb.FnbCategoryDataFood
 import com.kunangkunang.app.model.laundry.LaundryData
@@ -110,6 +111,31 @@ class ItemAdapter<T>(private val context: Context,
                                 val order = Order(roomID, this.id, null, category, this.name, 1, this.price, null)
                                 view.addOrder(order)
                             }
+                        }
+                    }
+                    Constants.ACTIVITIES -> {
+                        item.apply {
+                            this as ActivitiesData
+
+                            this.image?.let {
+                                Glide.with(itemView)
+                                    .load(it)
+                                    .into(itemView.img_data)
+                            }
+
+                            this.name?.let {
+                                itemView.tv_name.text = it
+                            }
+
+                            this.description?.let {
+                                itemView.tv_description.text = it
+                            }
+
+                            this.price?.let {
+                                itemView.tv_price.text = Utilities.getCurrency(it)
+                            }
+
+                            itemView.tv_add_item.visibility = View.GONE
                         }
                     }
                     else -> return

@@ -1,6 +1,7 @@
 package com.kunangkunang.app.api
 
 import android.util.Log
+import com.kunangkunang.app.model.activities.Activities
 import com.kunangkunang.app.model.amenities.Amenities
 import com.kunangkunang.app.model.banner.Banner
 import com.kunangkunang.app.model.checkout.Checkout
@@ -149,6 +150,28 @@ class AppRepository {
                 }
 
                 override fun onResponse(call: Call<Amenities?>, response: Response<Amenities?>?) {
+                    response?.let {
+                        if (it.isSuccessful) {
+                            callback.onDataLoaded(it.body())
+                        } else {
+                            callback.onDataError()
+                        }
+                    }
+                }
+            })
+
+    }
+
+    fun getActivities(callback: AppRepositoryCallback<Activities?>) {
+        ApiClient
+            .kunangKunangAPIServices
+            .getActivities()
+            .enqueue(object : Callback<Activities?> {
+                override fun onFailure(call: Call<Activities?>, t: Throwable) {
+                    callback.onDataError()
+                }
+
+                override fun onResponse(call: Call<Activities?>, response: Response<Activities?>?) {
                     response?.let {
                         if (it.isSuccessful) {
                             callback.onDataLoaded(it.body())

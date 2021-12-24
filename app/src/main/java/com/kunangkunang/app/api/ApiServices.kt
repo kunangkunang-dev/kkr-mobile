@@ -1,6 +1,7 @@
 package com.kunangkunang.app.api
 
 import com.kunangkunang.app.BuildConfig
+import com.kunangkunang.app.model.activities.Activities
 import com.kunangkunang.app.model.amenities.Amenities
 import com.kunangkunang.app.model.banner.Banner
 import com.kunangkunang.app.model.checkout.Checkout
@@ -52,6 +53,9 @@ interface ApiServices {
 
     @GET("data/get-amenities")
     fun getAmenities(): Call<Amenities>
+
+    @GET("data/get-tour")
+    fun getActivities(): Call<Activities>
 
     @POST("event/send-transaction")
     fun postTransaction(@Body transaction: Transaction): Call<TransactionResponse>
