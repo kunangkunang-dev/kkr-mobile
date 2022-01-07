@@ -1,16 +1,16 @@
 
-Okotlin:S1144ş"/Remove this unused private "launchChat" method.(ŞÀ8½‰¹ÃŞ/
 <kotlin:S125¹"Remove this commented out code.(á«®Îúÿÿÿÿ
->kotlin:S125„"Remove this commented out code.(…äæ8£ÂÒÂŞ/
 pkotlin:S3776Í"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(Ä¸Ö·ùÿÿÿÿ
-7kotlin:S125Â"Remove this commented out code.(Å²
->kotlin:S125é"Remove this commented out code.(ì…ù‘8½‰¹ÃŞ/
-skotlin:S1192ª"UDefine a constant instead of duplicating this literal "Guest not checked in" 4 times.(³®‹Ÿúÿÿÿÿ
-zkotlin:S1186—"ZAdd a nested comment explaining why this function is empty or complete the implementation.(ØÕª8½‰¹ÃŞ/
-]kotlin:S1144´	"8Remove this unused private "moveToTitleActivity" method.(Õ¬«¤şÿÿÿÿ8½‰¹ÃŞ/
-Ckotlin:S125í"Remove this commented out code.(Åá¾Àùÿÿÿÿ8½‰¹ÃŞ/
-<kotlin:S125§"Remove this commented out code.(üÈ«æşÿÿÿÿ
-kotlin:S1186“"ZAdd a nested comment explaining why this function is empty or complete the implementation.(’äÎ°úÿÿÿÿ8½‰¹ÃŞ/
->kotlin:S125ì"Remove this commented out code.(…äæ8½‰¹ÃŞ/
 7kotlin:S125°"Remove this commented out code.(Ì›ò™
+>kotlin:S125ì"Remove this commented out code.(…äæ8½‰¹ÃŞ/
+Ckotlin:S125í"Remove this commented out code.(Åá¾Àùÿÿÿÿ8½‰¹ÃŞ/
+]kotlin:S1144´	"8Remove this unused private "moveToTitleActivity" method.(Õ¬«¤şÿÿÿÿ8½‰¹ÃŞ/
+<kotlin:S125§"Remove this commented out code.(üÈ«æşÿÿÿÿ
+>kotlin:S125é"Remove this commented out code.(ì…ù‘8½‰¹ÃŞ/
+7kotlin:S125Â"Remove this commented out code.(Å²
+skotlin:S1192ª"UDefine a constant instead of duplicating this literal "Guest not checked in" 4 times.(³®‹Ÿúÿÿÿÿ
+Okotlin:S1144ş"/Remove this unused private "launchChat" method.(ŞÀ8½‰¹ÃŞ/
+kotlin:S1186“"ZAdd a nested comment explaining why this function is empty or complete the implementation.(’äÎ°úÿÿÿÿ8½‰¹ÃŞ/
+zkotlin:S1186—"ZAdd a nested comment explaining why this function is empty or complete the implementation.(ØÕª8½‰¹ÃŞ/
 rkotlin:S3776á"RRefactor this method to reduce its Cognitive Complexity from 58 to the 15 allowed.(¼íÊº8½‰¹ÃŞ/
+>kotlin:S125„"Remove this commented out code.(…äæ8£ÂÒÂŞ/

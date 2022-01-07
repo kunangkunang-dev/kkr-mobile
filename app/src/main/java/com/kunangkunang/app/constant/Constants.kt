@@ -11,5 +11,6 @@ object Constants {
     const val MAIN_ACTIVITY_KEY = "main_activity"
     const val FROM_MAIN_ACTIVITY = 1
     const val ROOM_RESTAURANT = "Restaurant"
+    const val MASTER_PASSWORD = "123Kun@ng789Kun@ng"
 
 }

@@ -100,6 +100,12 @@ class SpaActivity : AppCompatActivity(), TransactionView<Spa?>, OrderView<Order?
                 orderAdapter.notifyDataSetChanged()
                 isOrderEmpty()
                 Toast.makeText(this, "Your order has been placed", Toast.LENGTH_SHORT).show()
+            } else if (it == 103){
+                order.clear()
+                orderAdapter.notifyDataSetChanged()
+                isOrderEmpty()
+                initiateTask()
+                Toast.makeText(this, data.message, Toast.LENGTH_LONG).show()
             }
         }
     }

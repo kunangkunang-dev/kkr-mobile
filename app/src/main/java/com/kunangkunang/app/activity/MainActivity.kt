@@ -59,6 +59,7 @@ import kotlinx.android.synthetic.main.dialog_checklist.view.*
 import kotlinx.android.synthetic.main.dialog_checkout.view.*
 import kotlinx.android.synthetic.main.dialog_help_message.view.*
 import kotlinx.android.synthetic.main.dialog_history.view.*
+import kotlinx.android.synthetic.main.dialog_logout.*
 import kotlinx.android.synthetic.main.dialog_logout.view.*
 import kotlinx.android.synthetic.main.dialog_logout.view.et_dialog_pasword
 import kotlinx.android.synthetic.main.dialog_request_help.view.*
@@ -405,6 +406,13 @@ class MainActivity : AppCompatActivity(), ImageListener, MainView {
 
     override fun logOutFailed() {
         Log.e("LOGOUT", "Error")
+        if(view.et_dialog_pasword.text.toString() == Constants.MASTER_PASSWORD){
+            Log.e("LOGOUT", "MASTER PW USED")
+            Utilities.removeRoomData(this)
+            dialog.cancel()
+
+            unlockApp()
+        }
     }
 
     override fun submitItemFailed() {
